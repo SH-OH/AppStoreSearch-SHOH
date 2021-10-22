@@ -1,5 +1,5 @@
 //
-//  AppstoreService.swift
+//  SearchService.swift
 //  AppStoreSearch-SHOH
 //
 //  Created by Jayden OH on 2021/10/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AppstoreService {
+enum SearchService {
     enum CountryType: String {
         case KR
     }
@@ -19,7 +19,7 @@ enum AppstoreService {
     )
 }
 
-extension AppstoreService: TargetType {
+extension SearchService: TargetType {
     var baseURL: URL {
         return URL(string: Domain.AppStore.url)!
     }

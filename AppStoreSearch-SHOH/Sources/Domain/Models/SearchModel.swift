@@ -10,7 +10,7 @@ import SPMSHOHProxy
 
 struct SearchModel: Codable {
     @DefaultWrapper private(set) var resultCount: Int
-    @DefaultWrapper private(set) var results: [Result]
+    let results: [Result]
     
     struct Result: Codable, Hashable {
         @DefaultWrapper private(set) var advisories: [String]
@@ -29,17 +29,13 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var primaryGenreId: Int
         @DefaultWrapper private(set) var trackId: Int
         @DefaultWrapper private(set) var trackName: String
-        @DefaultWrapper private(set) var releaseNotes: String
         @DefaultWrapper private(set) var releaseDate: String
-        @DefaultWrapper private(set) var formattedPrice: String
         @DefaultWrapper private(set) var genreIds: [String]
         @DefaultWrapper private(set) var isVppDeviceBasedLicensingEnabled: Bool
         @DefaultWrapper private(set) var primaryGenreName: String
         @DefaultWrapper private(set) var currentVersionReleaseDate: String
-        @DefaultWrapper private(set) var minimumOsVerion: String
+        @DefaultWrapper private(set) var minimumOsVersion: String
         @DefaultWrapper private(set) var currency: String
-        @DefaultWrapper private(set) var fileSizeBytes: String
-        @DefaultWrapper private(set) var sellerUrl: String
         @DefaultWrapper private(set) var averageUserRating: Double
         @DefaultWrapper private(set) var contentAdvisoryRating: String
         @DefaultWrapper private(set) var averageUserRatingForCurrentVersion: Double
@@ -51,11 +47,16 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var version: String
         @DefaultWrapper private(set) var wrapperType: String
         @DefaultWrapper private(set) var genres: [String]
-        @DefaultWrapper private(set) var price: Double
         @DefaultWrapper private(set) var artistId: Int
         @DefaultWrapper private(set) var artistName: String
         @DefaultWrapper private(set) var description: String
         @DefaultWrapper private(set) var bundleId: String
         @DefaultWrapper private(set) var userRatingCount: Int
+        
+        private(set) var releaseNotes: String?
+        private(set) var formattedPrice: String?
+        private(set) var fileSizeBytes: String?
+        private(set) var sellerUrl: String?
+        private(set) var price: Double?
     }
 }

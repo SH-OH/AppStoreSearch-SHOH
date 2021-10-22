@@ -9,6 +9,8 @@ import UIKit
 
 import SPMSHOHProxy
 import ReactorKit
+import RxSwift
+import RxRelay
 
 final class SearchResultViewController: UIViewController, StoryboardLoadable, SearchChildProtocol {
     
@@ -16,6 +18,8 @@ final class SearchResultViewController: UIViewController, StoryboardLoadable, Se
     
     var disposeBag: DisposeBag = .init()
     var childType: SearchViewReactor.ChildType = .result
+    
+    let searchListEvent: PublishRelay<[SearchModel.Result]> = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +35,21 @@ extension SearchResultViewController: StoryboardView {
         collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        Observable.just((100...150).map(String.init))
+        searchListEvent
             .bind(to: collectionView.rx.items(
                 cellIdentifier: SearchRecentViewCell.reuseIdentifier,
                 cellType: SearchRecentViewCell.self
             )) { index, element, cell in
                 print("is result >> index : \(index) - element : \(element)")
             }.disposed(by: disposeBag)
+        
+//        Observable.just((100...150).map(String.init))
+//            .bind(to: collectionView.rx.items(
+//                cellIdentifier: SearchRecentViewCell.reuseIdentifier,
+//                cellType: SearchRecentViewCell.self
+//            )) { index, element, cell in
+//                print("is result >> index : \(index) - element : \(element)")
+//            }.disposed(by: disposeBag)
     }
 }
 

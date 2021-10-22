@@ -31,13 +31,13 @@ extension SearchRecentViewController: StoryboardView {
         collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        Observable.just((10...40).map(String.init))
-            .bind(to: collectionView.rx.items(
-                cellIdentifier: SearchRecentViewCell.reuseIdentifier,
-                cellType: SearchRecentViewCell.self
-            )) { index, element, cell in
-                print("is recent >> index : \(index) - element : \(element)")
-            }.disposed(by: disposeBag)
+//        Observable.just((10...40).map(String.init))
+//            .bind(to: collectionView.rx.items(
+//                cellIdentifier: SearchRecentViewCell.reuseIdentifier,
+//                cellType: SearchRecentViewCell.self
+//            )) { index, element, cell in
+//                print("is recent >> index : \(index) - element : \(element)")
+//            }.disposed(by: disposeBag)
     }
 }
 

@@ -10,6 +10,10 @@ import UIKit.UINavigationController
 import SPMSHOHProxy
 
 final class SearchCoordinator: CoordinatorType {
+    struct SearchDependency: Dependency {
+        let useCase: SearchUseCase
+    }
+    
     private unowned var navigationController: UINavigationController
     private var currentChild: SearchChildProtocol?
     
@@ -17,13 +21,16 @@ final class SearchCoordinator: CoordinatorType {
         self.navigationController = navigationController
     }
     
-    func start(with dependency: Dependency? = nil) {
+    func start(with dependency: Dependency?) {
+        guard let dependency = dependency as? SearchDependency else {
+            return
+        }
         let viewController = SearchViewController.storyboard()
         viewController.title = navigationController.title
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationItem.largeTitleDisplayMode = .automatic
         
-        viewController.reactor = SearchViewReactor()
+        viewController.reactor = SearchViewReactor(useCase: dependency.useCase)
         viewController.coordinator = self
         navigationController.setViewControllers([viewController], animated: false)
     }

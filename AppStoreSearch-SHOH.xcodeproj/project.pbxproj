@@ -10,6 +10,7 @@
 		0983657927220D6F00C3F7E9 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983657827220D6F00C3F7E9 /* SearchResultViewController.swift */; };
 		0983657D27220E9800C3F7E9 /* SearchResultViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983657C27220E9800C3F7E9 /* SearchResultViewReactor.swift */; };
 		0983657F27220EAC00C3F7E9 /* SearchResultViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0983657E27220EAC00C3F7E9 /* SearchResultViewController.storyboard */; };
+		098365812722250E00C3F7E9 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098365802722250E00C3F7E9 /* SearchUseCase.swift */; };
 		09B5609027215ADF00D45733 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5608F27215ADF00D45733 /* AppDelegate.swift */; };
 		09B5609227215ADF00D45733 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B5609127215ADF00D45733 /* SceneDelegate.swift */; };
 		09B5609927215AE100D45733 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09B5609827215AE100D45733 /* Assets.xcassets */; };
@@ -28,7 +29,7 @@
 		09B560E02721728700D45733 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560DF2721728700D45733 /* TargetType.swift */; };
 		09B560E4272172B700D45733 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560E3272172B700D45733 /* HTTPMethod.swift */; };
 		09B560E6272172C200D45733 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560E5272172C200D45733 /* Task.swift */; };
-		09B560EA2721736400D45733 /* AppstoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560E92721735E00D45733 /* AppstoreService.swift */; };
+		09B560EA2721736400D45733 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560E92721735E00D45733 /* SearchService.swift */; };
 		09B560EC2721738500D45733 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560EB2721738500D45733 /* Domain.swift */; };
 		09B560EF2721770B00D45733 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560ED2721764300D45733 /* SearchModel.swift */; };
 		09B560F32721C14200D45733 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560F22721C14200D45733 /* SearchViewController.swift */; };
@@ -69,6 +70,7 @@
 		0983657827220D6F00C3F7E9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		0983657C27220E9800C3F7E9 /* SearchResultViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewReactor.swift; sourceTree = "<group>"; };
 		0983657E27220EAC00C3F7E9 /* SearchResultViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultViewController.storyboard; sourceTree = "<group>"; };
+		098365802722250E00C3F7E9 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		09B5608C27215ADF00D45733 /* AppStoreSearch-SHOH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppStoreSearch-SHOH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B5608F27215ADF00D45733 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09B5609127215ADF00D45733 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +92,7 @@
 		09B560DF2721728700D45733 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		09B560E3272172B700D45733 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		09B560E5272172C200D45733 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		09B560E92721735E00D45733 /* AppstoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppstoreService.swift; sourceTree = "<group>"; };
+		09B560E92721735E00D45733 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		09B560EB2721738500D45733 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		09B560ED2721764300D45733 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		09B560F22721C14200D45733 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -330,7 +332,7 @@
 		09B560E72721734200D45733 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				09B560E92721735E00D45733 /* AppstoreService.swift */,
+				09B560E92721735E00D45733 /* SearchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -338,6 +340,7 @@
 		09B560E82721734700D45733 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				098365802722250E00C3F7E9 /* SearchUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -698,10 +701,11 @@
 				09B560DA2721718400D45733 /* ImageCache.swift in Sources */,
 				09B561062721E1BC00D45733 /* SearchRecentViewReactor.swift in Sources */,
 				09B5609027215ADF00D45733 /* AppDelegate.swift in Sources */,
+				098365812722250E00C3F7E9 /* SearchUseCase.swift in Sources */,
 				09B5609227215ADF00D45733 /* SceneDelegate.swift in Sources */,
 				09B560EF2721770B00D45733 /* SearchModel.swift in Sources */,
 				09B560E4272172B700D45733 /* HTTPMethod.swift in Sources */,
-				09B560EA2721736400D45733 /* AppstoreService.swift in Sources */,
+				09B560EA2721736400D45733 /* SearchService.swift in Sources */,
 				09B560D727216C6A00D45733 /* ImageView+Extensions.swift in Sources */,
 				09B560E6272172C200D45733 /* Task.swift in Sources */,
 				09B560D327216C4C00D45733 /* NetworkProvider.swift in Sources */,

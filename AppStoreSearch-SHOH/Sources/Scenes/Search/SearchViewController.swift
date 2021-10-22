@@ -75,12 +75,21 @@ extension SearchViewController: StoryboardView {
     
     private func bindInput(reactor: SearchViewReactor) {
         let searchBar = searchController.searchBar
-        let sharedText = searchBar.rx.text
+        let sharedSearchClicked = searchBar.rx.searchButtonClicked
+            .share()
+        
+        let sharedText = searchBar.rx.text.orEmpty
             .distinctUntilChanged()
             .share()
         
+        sharedSearchClicked
+            .withLatestFrom(sharedText)
+            .map(Reactor.Action.updateSearchKeyword)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         Observable<SearchViewReactor.ChildType>.merge(
-            searchBar.rx.searchButtonClicked.map({ .result }),
+            sharedSearchClicked.map({ .result }),
             searchBar.rx.cancelButtonClicked.map({ .recent }),
             sharedText.map({ _ in .recent })
         )
@@ -91,16 +100,22 @@ extension SearchViewController: StoryboardView {
     }
     
     private func bindOutput(reactor: SearchViewReactor) {
-        reactor.state.map { $0.childType }
-        .distinctUntilChanged()
-        .bind(onNext: { [weak self] childType in
-            guard let self = self else { return }
-            switch childType {
-            case .recent:
-                self.coordinator?.changeChild(child: self.recentViewController)
-            case .result:
-                self.coordinator?.changeChild(child: self.resultViewController)
-            }
-        }).disposed(by: disposeBag)
+        reactor.state.map({ $0.searchList })
+            .distinctUntilChanged()
+            .debug()
+            .bind(to: resultViewController.searchListEvent)
+            .disposed(by: disposeBag)
+            
+        reactor.state.map({ $0.childType })
+            .distinctUntilChanged()
+            .bind(onNext: { [weak self] childType in
+                guard let self = self else { return }
+                switch childType {
+                case .recent:
+                    self.coordinator?.changeChild(child: self.recentViewController)
+                case .result:
+                    self.coordinator?.changeChild(child: self.resultViewController)
+                }
+            }).disposed(by: disposeBag)
     }
 }

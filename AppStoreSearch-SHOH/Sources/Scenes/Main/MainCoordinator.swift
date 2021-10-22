@@ -30,7 +30,10 @@ final class MainCoordinator: CoordinatorType {
         
         navigationController.setViewControllers([mainTabBarController], animated: false)
         
-        coordinate(to: search.coordinator)
+        let searchDependency = SearchCoordinator.SearchDependency(
+            useCase: SearchUseCase()
+        )
+        coordinate(to: search.coordinator, with: searchDependency)
     }
     
     private func createChild(with tabBarType: TabBarType)

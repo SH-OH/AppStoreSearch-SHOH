@@ -17,7 +17,6 @@ final class NetworkProvider<Target: TargetType> {
     }
     
     private let session: URLSessionProtocol
-    private let timeout: Double
     private let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -25,11 +24,9 @@ final class NetworkProvider<Target: TargetType> {
     }()
     
     init(
-        session: URLSessionProtocol = URLSession.shared,
-        timeout: Double = 30.0
+        session: URLSessionProtocol = URLSession.shared
     ) {
         self.session = session
-        self.timeout = timeout
     }
     
     func request<D: Decodable>(
@@ -42,7 +39,7 @@ final class NetworkProvider<Target: TargetType> {
             guard let self = self else { return disposable }
             let url = self.configURL(by: target)
             
-            var request = URLRequest(url: url, timeoutInterval: self.timeout)
+            var request = URLRequest(url: url)
             request.httpMethod = target.method.rawValue
             request.allHTTPHeaderFields = target.headers
             request = request.configTask(by: target.task)
@@ -71,7 +68,9 @@ final class NetworkProvider<Target: TargetType> {
             
             task.resume()
             
-            return Disposables.create()
+            return Disposables.create {
+                task.cancel()
+            }
         }
         .observe(on: ConcurrentDispatchQueueScheduler(queue: callbackQueue))
     }
@@ -95,15 +94,15 @@ extension URLRequest {
         case let .requestParameters(parameters, encoding):
             switch encoding {
             case .URLEncoding:
-                guard let url = self.url, !parameters.isEmpty else {
-                    print("Failed URLEncoding")
-                    return self
-                }
-                if var components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-                    let percentEncodedQuery = (components.percentEncodedQuery.map({ $0 + "&" })) ?? ""
+                guard let encodedUrlString = self.url?.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                      let encodedUrl = URL(string: encodedUrlString),
+                      !parameters.isEmpty else {
+                          return self
+                      }
+                
+                if var components = URLComponents(url: encodedUrl, resolvingAgainstBaseURL: false) {
                     let query = parameters.map({ "\($0.key)=\($0.value)" }).joined(separator: "&")
-                    
-                    components.percentEncodedQuery = percentEncodedQuery + query
+                    components.query = query
                     var newRequest = self
                     newRequest.url = components.url
                     return newRequest
