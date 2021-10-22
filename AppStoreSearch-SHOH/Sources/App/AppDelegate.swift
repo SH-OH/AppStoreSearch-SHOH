@@ -19,7 +19,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13, *) {
         } else {
             let window = UIWindow(frame: UIScreen.main.bounds)
-            let dependency = AppCoordinator.AppDependency(window: window)
+            let dependency = AppCoordinator.Dependency(window: window)
             AppCoordinator().start(with: dependency)
             self.window = window
         }

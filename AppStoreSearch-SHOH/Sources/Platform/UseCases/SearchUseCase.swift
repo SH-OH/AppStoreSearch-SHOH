@@ -17,12 +17,19 @@ struct SearchUseCase {
     
     func fetchSearchList(
         query: String,
-        entity: String = "software",
+        offset: Int = 0,
+        limit: Int = 50,
         country: SearchService.CountryType = .KR
     ) -> Observable<[SearchModel.Result]> {
         return provider.request(
             SearchModel.self,
-            target: .getSearchList(term: query, entity: entity, country: country)
+            target: .getSearchList(
+                term: query,
+                offset: offset,
+                limit: limit,
+                country: country
+            )
+            
         )
             .map({ $0.results })
             .asObservable()

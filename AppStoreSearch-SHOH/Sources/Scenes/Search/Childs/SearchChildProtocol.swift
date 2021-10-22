@@ -20,13 +20,4 @@ extension SearchChildProtocol {
         }
         return vc
     }
-    
-    func createReactor<R: Reactor>() -> R? {
-        switch childType {
-        case .recent:
-            return SearchRecentViewReactor() as? R
-        case .result:
-            return SearchResultViewReactor() as? R
-        }
-    }
 }

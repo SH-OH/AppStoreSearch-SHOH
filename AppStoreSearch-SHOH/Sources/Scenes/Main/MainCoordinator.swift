@@ -16,7 +16,7 @@ final class MainCoordinator: CoordinatorType {
         self.navigationController = navigationController
     }
     
-    func start(with dependency: Dependency? = nil) {
+    func start(with dependency: DependencyType? = nil) {
         let mainTabBarController = UITabBarController()
         mainTabBarController.view.backgroundColor = .white
         mainTabBarController.tabBar.backgroundColor = .white.withAlphaComponent(0.8)
@@ -30,7 +30,7 @@ final class MainCoordinator: CoordinatorType {
         
         navigationController.setViewControllers([mainTabBarController], animated: false)
         
-        let searchDependency = SearchCoordinator.SearchDependency(
+        let searchDependency = SearchCoordinator.Dependency(
             useCase: SearchUseCase()
         )
         coordinate(to: search.coordinator, with: searchDependency)

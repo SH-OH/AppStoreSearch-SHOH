@@ -14,7 +14,8 @@ enum SearchService {
     
     case getSearchList(
         term: String,
-        entity: String,
+        offset: Int,
+        limit: Int,
         country: CountryType
     )
 }
@@ -48,9 +49,11 @@ extension SearchService: TargetType {
     var task: Task {
         var params: [String: Any] = [:]
         switch self {
-        case let .getSearchList(term, entity, country):
+        case let .getSearchList(term, offset, limit, country):
             params["term"] = term
-            params["entity"] = entity
+            params["offset"] = offset
+            params["limit"] = limit
+            params["entity"] = "software"
             params["country"] = country.rawValue
             return .requestParameters(parameters: params, encoding: .URLEncoding)
         }

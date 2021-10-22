@@ -10,12 +10,12 @@ import UIKit
 import SPMSHOHProxy
 
 final class AppCoordinator: CoordinatorType {
-    struct AppDependency: Dependency {
+    struct Dependency: DependencyType {
         let window: UIWindow?
     }
     
-    func start(with dependency: Dependency? = nil) {
-        guard let dependency = dependency as? AppDependency else {
+    func start(with dependency: DependencyType? = nil) {
+        guard let dependency = dependency as? Dependency else {
             return
         }
         let rootNavigationController = UINavigationController()
@@ -24,7 +24,7 @@ final class AppCoordinator: CoordinatorType {
         dependency.window?.makeKeyAndVisible()
         
         let mainCoordinator = MainCoordinator(rootNavigationController)
-        coordinate(to: mainCoordinator)
+        coordinate(to: mainCoordinator, with: nil)
     }
     
 }

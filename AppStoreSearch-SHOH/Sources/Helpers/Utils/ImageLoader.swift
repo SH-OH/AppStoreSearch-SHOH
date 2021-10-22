@@ -7,29 +7,30 @@
 
 import Foundation
 import UIKit.UIImage
+import RxSwift
 
 typealias ImageLoaderBlock = (Result<UIImage?, ImageLoader.ImageError>) -> Void
 
 final class ImageLoader {
     enum ImageError: Error {
-        case invalidURL(_ imageUrl: String)
+        case invalidURL(_ imageUrl: String?)
         case networkError(_ error: Error)
         case unknown
     }
     
     private enum QueueType {
-        case main
+        case `default`
         case imageProcess
         case cache
         
-        func excute(_ block: @escaping () -> Void) {
+        var queue: DispatchQueue {
             switch self {
-            case .main:
-                DispatchQueue.main.async(execute: block)
+            case .default:
+                return DispatchQueue(label: "ImageLoader.default")
             case .imageProcess:
-                DispatchQueue(label: "ImageLoader.imageProcess").async(execute: block)
+                return DispatchQueue(label: "ImageLoader.imageProcess")
             case .cache:
-                DispatchQueue(label: "ImageLoader.imageCache").async(execute: block)
+                return DispatchQueue(label: "ImageLoader.imageCache")
             }
         }
     }
@@ -52,61 +53,70 @@ final class ImageLoader {
         self.timeout = timeout
     }
     
-    func load(
-        _ imageUrl: String,
-        completion: @escaping ImageLoaderBlock
-    ) -> URLSessionDataTask? {
-        if let cachedImage = imageCache.getImage(imageUrl) {
-            QueueType.main.excute {
-                completion(.success(cachedImage))
+    func load(_ imageUrl: String?) -> Single<UIImage?> {
+        return Single<UIImage?>.create { [weak self] observer in
+            let disposable = Disposables.create()
+            
+            guard let self = self else { return disposable }
+            guard let imageUrl = imageUrl else {
+                observer(.failure(ImageError.invalidURL(imageUrl)))
+                return disposable
             }
-            return nil
-        } else {
-            let dataTask = createTask(imageUrl) { result in
-                QueueType.main.excute {
-                    completion(result)
-                }
+            
+            if let cachedImage = self.imageCache.getImage(imageUrl) {
+                observer(.success(cachedImage))
+                return disposable
+            } else {
+                _ = self.createTask(imageUrl)
+                    .subscribe(observer)
             }
-            dataTask?.resume()
-            return dataTask
+            
+            return disposable
         }
+        .subscribe(on: ConcurrentDispatchQueueScheduler(queue: QueueType.default.queue))
+        .observe(on: MainScheduler.asyncInstance)
     }
 }
 
 extension ImageLoader {
-    private func createTask(
-        _ imageUrl: String,
-        completion: @escaping ImageLoaderBlock
-    ) -> URLSessionDataTask? {
-        guard let url = URL(string: imageUrl) else {
-            completion(.failure(.invalidURL(imageUrl)))
-            return nil
-        }
-        
-        let request = URLRequest(
-            url: url,
-            cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: self.timeout
-        )
-        
-        let newDataTask = self.session.dataTask(with: request) { [weak self] data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...399).contains(httpResponse.statusCode) else {
-                      completion(.failure(.networkError(error ?? ImageError.unknown)))
-                      return
-                  }
-            
-            if let data = data {
-                self?.processImage(data, imageUrl: imageUrl) { image in
-                    completion(.success(image))
-                }
-                return
+    private func createTask(_ imageUrl: String) -> Single<UIImage?> {
+        return Single<UIImage?>.create { [weak self] observer in
+            let disposable = Disposables.create()
+            guard let self = self else { return disposable }
+            guard let url = URL(string: imageUrl) else {
+                observer(.failure(ImageError.invalidURL(imageUrl)))
+                return disposable
             }
             
-            completion(.failure(.unknown))
+            let request = URLRequest(
+                url: url,
+                cachePolicy: .reloadIgnoringLocalCacheData,
+                timeoutInterval: self.timeout
+            )
+            
+            let newDataTask = self.session.dataTask(with: request) { [weak self] data, response, error in
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200...399).contains(httpResponse.statusCode) else {
+                          observer(.failure(ImageError.networkError(error ?? ImageError.unknown)))
+                          return
+                      }
+                
+                if let data = data {
+                    self?.processImage(data, imageUrl: imageUrl) { image in
+                        observer(.success(image))
+                    }
+                    return
+                }
+                
+                observer(.failure(ImageError.unknown))
+            }
+            
+            newDataTask.resume()
+            
+            return Disposables.create {
+                newDataTask.cancel()
+            }
         }
-        
-        return newDataTask
     }
     
     private func processImage(
@@ -114,10 +124,10 @@ extension ImageLoader {
         imageUrl: String,
         completion: @escaping (UIImage?) -> Void
     ) {
-        QueueType.imageProcess.excute { [weak self] in
+        QueueType.imageProcess.queue.async { [weak self] in
             let image = UIImage(data: data)
             if let image = image {
-                QueueType.cache.excute { [weak self] in
+                QueueType.cache.queue.async { [weak self] in
                     self?.imageCache.setImage(imageUrl, image: image)
                 }
             }

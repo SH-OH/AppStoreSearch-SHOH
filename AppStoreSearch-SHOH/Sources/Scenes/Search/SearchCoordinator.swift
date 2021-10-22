@@ -10,7 +10,7 @@ import UIKit.UINavigationController
 import SPMSHOHProxy
 
 final class SearchCoordinator: CoordinatorType {
-    struct SearchDependency: Dependency {
+    struct Dependency: DependencyType {
         let useCase: SearchUseCase
     }
     
@@ -21,8 +21,8 @@ final class SearchCoordinator: CoordinatorType {
         self.navigationController = navigationController
     }
     
-    func start(with dependency: Dependency?) {
-        guard let dependency = dependency as? SearchDependency else {
+    func start(with dependency: DependencyType?) {
+        guard let dependency = dependency as? Dependency else {
             return
         }
         let viewController = SearchViewController.storyboard()
@@ -35,25 +35,26 @@ final class SearchCoordinator: CoordinatorType {
         navigationController.setViewControllers([viewController], animated: false)
     }
     
-    func changeChild(child: SearchChildProtocol) {
+    func changeChild(child: SearchChildProtocol, dependecy: DependencyType) {
         if let currentChild = currentChild {
             detachChild(child: currentChild)
         }
-        attachChild(child: child)
+        attachChild(child: child, dependecy: dependecy)
     }
 }
 
 extension SearchCoordinator {
-    private func attachChild(child: SearchChildProtocol) {
+    private func attachChild(child: SearchChildProtocol, dependecy: DependencyType) {
         switch child.childType {
         case .recent:
             let viewController = child.viewController(SearchRecentViewController.self)
-            viewController.reactor = SearchRecentViewReactor()
+            
+            viewController.reactor = SearchRecentViewReactor(dependecy)
             viewController.view.isHidden = false
             self.currentChild = viewController
         case .result:
             let viewController = child.viewController(SearchResultViewController.self)
-            viewController.reactor = SearchResultViewReactor()
+            viewController.reactor = SearchResultViewReactor(dependecy)
             viewController.view.isHidden = false
             self.currentChild = viewController
         }

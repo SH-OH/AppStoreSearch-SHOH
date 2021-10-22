@@ -10,13 +10,13 @@ import RxSwift
 
 final class NetworkProvider<Target: TargetType> {
     enum APIError: Error {
-        case invalidURL(_ imageUrl: String)
         case networkError(_ error: Error)
         case paredFail(_ error: Error)
         case unknown
     }
     
     private let session: URLSessionProtocol
+    private let defaultQueue: DispatchQueue
     private let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -24,9 +24,11 @@ final class NetworkProvider<Target: TargetType> {
     }()
     
     init(
-        session: URLSessionProtocol = URLSession.shared
+        session: URLSessionProtocol = URLSession.shared,
+        defaultQueue: DispatchQueue? = nil
     ) {
         self.session = session
+        self.defaultQueue = defaultQueue ?? DispatchQueue(label: "NetworkProvider.default")
     }
     
     func request<D: Decodable>(
@@ -72,57 +74,18 @@ final class NetworkProvider<Target: TargetType> {
                 task.cancel()
             }
         }
+        .subscribe(on: ConcurrentDispatchQueueScheduler(queue: self.defaultQueue))
         .observe(on: ConcurrentDispatchQueueScheduler(queue: callbackQueue))
     }
-    
+}
+
+extension NetworkProvider {
     private func configURL(by target: Target) -> URL {
         let path = target.path
         if path.isEmpty {
             return target.baseURL
         } else {
             return target.baseURL.appendingPathComponent(path)
-        }
-    }
-    
-}
-
-extension URLRequest {
-    func configTask(by task: Task) -> URLRequest {
-        switch task {
-        case .requestPlain:
-            return self
-        case let .requestParameters(parameters, encoding):
-            switch encoding {
-            case .URLEncoding:
-                guard let encodedUrlString = self.url?.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                      let encodedUrl = URL(string: encodedUrlString),
-                      !parameters.isEmpty else {
-                          return self
-                      }
-                
-                if var components = URLComponents(url: encodedUrl, resolvingAgainstBaseURL: false) {
-                    let query = parameters.map({ "\($0.key)=\($0.value)" }).joined(separator: "&")
-                    components.query = query
-                    var newRequest = self
-                    newRequest.url = components.url
-                    return newRequest
-                }
-                return self
-            case .JSONEncoding:
-                do {
-                    let data = try JSONSerialization.data(withJSONObject: parameters, options: [])
-                    var newRequest = self
-                    let contentType = "Content-Type"
-                    if newRequest.allHTTPHeaderFields?[contentType] == nil {
-                        newRequest.allHTTPHeaderFields?.updateValue("application/json", forKey: contentType)
-                    }
-                    newRequest.httpBody = data
-                    return newRequest
-                } catch {
-                    print("Failed JSONEncoding : \(error)")
-                    return self
-                }
-            }
         }
     }
 }

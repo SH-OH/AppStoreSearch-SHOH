@@ -6,8 +6,13 @@
 //
 
 import ReactorKit
+import SPMSHOHProxy
 
 final class SearchRecentViewReactor: Reactor {
+    struct Dependency: DependencyType {
+        let useCase: SearchUseCase
+    }
+    
     enum Action {
         
     }
@@ -20,8 +25,11 @@ final class SearchRecentViewReactor: Reactor {
     }
     
     let initialState: State
+    private let useCase: SearchUseCase
     
-    init() {
+    init(_ _dependency: DependencyType) {
+        let dependency = _dependency as? Dependency
         self.initialState = .init()
+        self.useCase = dependency?.useCase ?? .init()
     }
 }

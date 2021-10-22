@@ -6,37 +6,35 @@
 //
 
 import ReactorKit
+import SPMSHOHProxy
+
+typealias ChildInfoType = (type: SearchViewReactor.ChildType, dependency: DependencyType)
 
 final class SearchViewReactor: Reactor {
     enum ChildType {
-        case recent, result
+        case recent
+        case result
     }
     
     enum Action {
         case updateChildType(ChildType)
-        case updateSearchKeyword(String)
     }
     
     enum Mutation {
-        case setChildType(ChildType)
-        case setSearchKeyword(String)
-        case setSearchList([SearchModel.Result])
+        case setChildType(ChildInfoType)
     }
     
     struct State {
-        var childType: ChildType
-        var searchKeyword: String
-        var searchList: [SearchModel.Result]
+        var childInfo: ChildInfoType
     }
     
     let initialState: State
     private let useCase: SearchUseCase
     
     init(useCase: SearchUseCase) {
+        let dependency = SearchResultViewReactor.Dependency(useCase: useCase)
         self.initialState = .init(
-            childType: .recent,
-            searchKeyword: "",
-            searchList: []
+            childInfo: (.recent, dependency)
         )
         self.useCase = useCase
     }
@@ -46,16 +44,15 @@ extension SearchViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .updateChildType(childType):
-            return .just(.setChildType(childType))
-            
-        case let .updateSearchKeyword(keyword):
-            let setKeyword = Observable.just(Mutation.setSearchKeyword(keyword))
-            
-            let fetch = self.useCase.fetchSearchList(query: keyword)
-//                .take(until: self.action.filter(Action.isUpdateSearchKeyword))
-                .map(Mutation.setSearchList)
-            
-            return Observable.concat(setKeyword, fetch)
+            switch childType {
+            case .recent:
+                let dependency = SearchResultViewReactor.Dependency(useCase: self.useCase)
+                return Observable.just(Mutation.setChildType((childType, dependency)))
+                
+            case .result:
+                let dependency = SearchResultViewReactor.Dependency(useCase: self.useCase)
+                return Observable.just(Mutation.setChildType((childType, dependency)))
+            }
         }
     }
 }
@@ -64,25 +61,9 @@ extension SearchViewReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case let .setChildType(childType):
-            newState.childType = childType
-            
-        case let .setSearchKeyword(keyword):
-            newState.searchKeyword = keyword
-            
-        case let .setSearchList(searchList):
-            newState.searchList = searchList
+        case let .setChildType(childInfo):
+            newState.childInfo = childInfo
         }
         return newState
-    }
-}
-
-private extension SearchViewReactor.Action {
-    static func isUpdateSearchKeyword(_ action: SearchViewReactor.Action) -> Bool {
-        if case .updateSearchKeyword = action {
-            return true
-        } else {
-            return false
-        }
     }
 }

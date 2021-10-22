@@ -58,5 +58,30 @@ struct SearchModel: Codable {
         private(set) var fileSizeBytes: String?
         private(set) var sellerUrl: String?
         private(set) var price: Double?
+        
+        enum ScreenshotType {
+            case high
+            case wide
+            
+            var multiplier: Double {
+                switch self {
+                case .high:
+                    return 392.0/696.0
+                case .wide:
+                    return 406.0/228.0
+                }
+            }
+        }
+        
+        var screenshotType: ScreenshotType {
+            guard let slice = self.screenshotUrls.first?.components(separatedBy: "/").last?.dropLast(6) else {
+                return .high
+            }
+            
+            let split = slice.split(separator: "x")
+            let w = Int(split.first ?? "") ?? 392
+            let h = Int(split.last ?? "") ?? 696
+            return w > h ? .wide : .high
+        }
     }
 }

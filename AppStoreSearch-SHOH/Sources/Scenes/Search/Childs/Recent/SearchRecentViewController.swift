@@ -20,7 +20,7 @@ final class SearchRecentViewController: UIViewController, StoryboardLoadable, Se
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(SearchRecentViewCell.self)
+        collectionView.register(SearchRecentCell.self)
         
         collectionView.backgroundColor = .cyan
     }
@@ -33,8 +33,8 @@ extension SearchRecentViewController: StoryboardView {
         
 //        Observable.just((10...40).map(String.init))
 //            .bind(to: collectionView.rx.items(
-//                cellIdentifier: SearchRecentViewCell.reuseIdentifier,
-//                cellType: SearchRecentViewCell.self
+//                cellIdentifier: SearchRecentCell.reuseIdentifier,
+//                cellType: SearchRecentCell.self
 //            )) { index, element, cell in
 //                print("is recent >> index : \(index) - element : \(element)")
 //            }.disposed(by: disposeBag)

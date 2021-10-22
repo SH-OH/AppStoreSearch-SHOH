@@ -32,7 +32,6 @@ final class SearchViewController: UIViewController, StoryboardLoadable {
     
     private let recentViewController: SearchRecentViewController = {
         let viewController = SearchRecentViewController.storyboard()
-        viewController.reactor = SearchRecentViewReactor()
         return viewController
     }()
     private let resultViewController: SearchResultViewController = {
@@ -84,8 +83,7 @@ extension SearchViewController: StoryboardView {
         
         sharedSearchClicked
             .withLatestFrom(sharedText)
-            .map(Reactor.Action.updateSearchKeyword)
-            .bind(to: reactor.action)
+            .bind(to: resultViewController.searchClickedEvent)
             .disposed(by: disposeBag)
         
         Observable<SearchViewReactor.ChildType>.merge(
@@ -100,21 +98,15 @@ extension SearchViewController: StoryboardView {
     }
     
     private func bindOutput(reactor: SearchViewReactor) {
-        reactor.state.map({ $0.searchList })
-            .distinctUntilChanged()
-            .debug()
-            .bind(to: resultViewController.searchListEvent)
-            .disposed(by: disposeBag)
-            
-        reactor.state.map({ $0.childType })
-            .distinctUntilChanged()
-            .bind(onNext: { [weak self] childType in
+        reactor.state.map({ $0.childInfo })
+            .bind(onNext: { [weak self] childInfo in
                 guard let self = self else { return }
-                switch childType {
+                switch childInfo.type {
                 case .recent:
-                    self.coordinator?.changeChild(child: self.recentViewController)
+                    self.coordinator?.changeChild(child: self.recentViewController, dependecy: childInfo.dependency)
+                    
                 case .result:
-                    self.coordinator?.changeChild(child: self.resultViewController)
+                    self.coordinator?.changeChild(child: self.resultViewController, dependecy: childInfo.dependency)
                 }
             }).disposed(by: disposeBag)
     }
