@@ -14,6 +14,7 @@ end
 def rx_pods
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxGesture'
 end
 
 def ui_pods

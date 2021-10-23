@@ -10,6 +10,9 @@ PODS:
     - RxCocoa (~> 6.1)
     - RxSwift (~> 6.1)
     - RxTest (~> 6.1)
+  - RxGesture (4.0.2):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
@@ -24,6 +27,7 @@ DEPENDENCIES:
   - ReactorKit
   - RxCocoa
   - RxExpect (from `https://github.com/SH-OH/RxExpect.git`, branch `develop`)
+  - RxGesture
   - RxSwift
   - SnapKit
   - Then
@@ -33,6 +37,7 @@ SPEC REPOS:
     - ActiveLabel
     - ReactorKit
     - RxCocoa
+    - RxGesture
     - RxRelay
     - RxSwift
     - RxTest
@@ -55,6 +60,7 @@ SPEC CHECKSUMS:
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxExpect: 0a0e5a8c5bbd042d892a4bc653f3484395605886
+  RxGesture: f059f2aeef966fb17dad56ee440e76410f10e55f
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   RxTest: 9d26616eaff4a7e75f4ecae9b2c24840f2e8218d
@@ -62,6 +68,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 107ff19b8502f6389279207ab44b3456f8ae4f44
+PODFILE CHECKSUM: 47c26fd3957f5849b2afe33db5470b1e439264e8
 
 COCOAPODS: 1.11.2
