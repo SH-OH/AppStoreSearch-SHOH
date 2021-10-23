@@ -19,7 +19,7 @@ final class MainCoordinator: CoordinatorType {
     func start(with dependency: DependencyType? = nil) {
         let mainTabBarController = UITabBarController()
         mainTabBarController.view.backgroundColor = .white
-        mainTabBarController.tabBar.backgroundColor = .white.withAlphaComponent(0.8)
+        mainTabBarController.tabBar.backgroundColor = .white.withAlphaComponent(0.95)
         
         let search = createChild(with: .search)
         
@@ -40,7 +40,7 @@ final class MainCoordinator: CoordinatorType {
     -> (navigationController: UINavigationController, coordinator: CoordinatorType)
     {
         let childNavigationController = UINavigationController()
-        let backgroundColor: UIColor = .white.withAlphaComponent(0.8)
+        let backgroundColor: UIColor = .white.withAlphaComponent(0.95)
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()

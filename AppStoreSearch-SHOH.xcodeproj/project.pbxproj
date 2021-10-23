@@ -53,6 +53,12 @@
 		09E292AF2723301200866EF5 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292AE2723301200866EF5 /* NSLayoutConstraint+Extensions.swift */; };
 		09E292B127233F5400866EF5 /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292B027233F5400866EF5 /* ObservableType+Extensions.swift */; };
 		09E292B4272340D500866EF5 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292B3272340D500866EF5 /* Section.swift */; };
+		09E292B7272364B200866EF5 /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292B6272364B200866EF5 /* SearchResultDetailViewController.swift */; };
+		09E292B9272364C300866EF5 /* SearchResultDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292B8272364C300866EF5 /* SearchResultDetailViewReactor.swift */; };
+		09E292BB272364CB00866EF5 /* SearchResultDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E292BA272364CB00866EF5 /* SearchResultDetailViewController.storyboard */; };
+		09E292BD272379C700866EF5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BC272379C700866EF5 /* UIView+Extensions.swift */; };
+		09E292C027237C5E00866EF5 /* SearchResultDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */; };
+		09E292C227237CA700866EF5 /* SearchResultDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */; };
 		97F368EE3570281E0EE1EE81 /* Pods_AppStoreSearch_SHOHUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DB43C1FCC038DB5D4D375 /* Pods_AppStoreSearch_SHOHUITests.framework */; };
 		A76CC414F113CDDBBCE4EB0C /* Pods_AppStoreSearch_SHOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6806FB727321551517A8D82 /* Pods_AppStoreSearch_SHOH.framework */; };
 		B1E411380C6A7784B2C13BB9 /* Pods_AppStoreSearch_SHOHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757467765C279B6455934335 /* Pods_AppStoreSearch_SHOHTests.framework */; };
@@ -125,6 +131,12 @@
 		09E292AE2723301200866EF5 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		09E292B027233F5400866EF5 /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		09E292B3272340D500866EF5 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		09E292B6272364B200866EF5 /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
+		09E292B8272364C300866EF5 /* SearchResultDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewReactor.swift; sourceTree = "<group>"; };
+		09E292BA272364CB00866EF5 /* SearchResultDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultDetailViewController.storyboard; sourceTree = "<group>"; };
+		09E292BC272379C700866EF5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailCell.swift; sourceTree = "<group>"; };
+		09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultDetailCell.xib; sourceTree = "<group>"; };
 		1FDE6360A97A5136F558CF9C /* Pods-AppStoreSearch-SHOH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOH.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH.release.xcconfig"; sourceTree = "<group>"; };
 		53014729AE1C0DEE15958B2F /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.release.xcconfig"; sourceTree = "<group>"; };
 		5EA76CB4EAD160ADCE0FCCF2 /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHUITests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +292,7 @@
 				09E292AC2722DACB00866EF5 /* Number+Extensions.swift */,
 				09E292B027233F5400866EF5 /* ObservableType+Extensions.swift */,
 				09E292AA2722C64700866EF5 /* Reactive+Extensions.swift */,
+				09E292BC272379C700866EF5 /* UIView+Extensions.swift */,
 				098365822722869E00C3F7E9 /* URLRequest+Extensions.swift */,
 			);
 			path = Extensions;
@@ -388,6 +401,7 @@
 				09B560F22721C14200D45733 /* SearchViewController.swift */,
 				09B561032721D51000D45733 /* SearchViewReactor.swift */,
 				09B560FE2721D3DB00D45733 /* Childs */,
+				09E292B52723647400866EF5 /* Detail */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -426,6 +440,26 @@
 			children = (
 				09B5610D2721FCC200D45733 /* SearchRecentCell.swift */,
 				09B561112721FF1400D45733 /* SearchRecentCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		09E292B52723647400866EF5 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				09E292BA272364CB00866EF5 /* SearchResultDetailViewController.storyboard */,
+				09E292B6272364B200866EF5 /* SearchResultDetailViewController.swift */,
+				09E292B8272364C300866EF5 /* SearchResultDetailViewReactor.swift */,
+				09E292BE27237C4B00866EF5 /* Cells */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		09E292BE27237C4B00866EF5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */,
+				09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -570,6 +604,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0983657F27220EAC00C3F7E9 /* SearchResultViewController.storyboard in Resources */,
+				09E292C227237CA700866EF5 /* SearchResultDetailCell.xib in Resources */,
+				09E292BB272364CB00866EF5 /* SearchResultDetailViewController.storyboard in Resources */,
 				09B5609C27215AE100D45733 /* LaunchScreen.storyboard in Resources */,
 				09B561122721FF1400D45733 /* SearchRecentCell.xib in Resources */,
 				09B5609927215AE100D45733 /* Assets.xcassets in Resources */,
@@ -732,6 +768,8 @@
 				09B560CC2721630F00D45733 /* AppCoordinator.swift in Sources */,
 				09E292B4272340D500866EF5 /* Section.swift in Sources */,
 				09E292B127233F5400866EF5 /* ObservableType+Extensions.swift in Sources */,
+				09E292BD272379C700866EF5 /* UIView+Extensions.swift in Sources */,
+				09E292B7272364B200866EF5 /* SearchResultDetailViewController.swift in Sources */,
 				09E292AF2723301200866EF5 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				09B561082721E30400D45733 /* SearchChildProtocol.swift in Sources */,
 				09B560DE2721724F00D45733 /* Cachable.swift in Sources */,
@@ -743,6 +781,7 @@
 				09B5609027215ADF00D45733 /* AppDelegate.swift in Sources */,
 				098365812722250E00C3F7E9 /* SearchUseCase.swift in Sources */,
 				09B5609227215ADF00D45733 /* SceneDelegate.swift in Sources */,
+				09E292B9272364C300866EF5 /* SearchResultDetailViewReactor.swift in Sources */,
 				09B560EF2721770B00D45733 /* SearchModel.swift in Sources */,
 				09B560E4272172B700D45733 /* HTTPMethod.swift in Sources */,
 				09E292AD2722DACB00866EF5 /* Number+Extensions.swift in Sources */,
@@ -752,6 +791,7 @@
 				09B560D327216C4C00D45733 /* NetworkProvider.swift in Sources */,
 				098365832722869E00C3F7E9 /* URLRequest+Extensions.swift in Sources */,
 				09B560EC2721738500D45733 /* Domain.swift in Sources */,
+				09E292C027237C5E00866EF5 /* SearchResultDetailCell.swift in Sources */,
 				09E292AB2722C64700866EF5 /* Reactive+Extensions.swift in Sources */,
 				09B5610E2721FCC200D45733 /* SearchRecentCell.swift in Sources */,
 				09E292A72722AF3F00866EF5 /* SearchResultCell.swift in Sources */,

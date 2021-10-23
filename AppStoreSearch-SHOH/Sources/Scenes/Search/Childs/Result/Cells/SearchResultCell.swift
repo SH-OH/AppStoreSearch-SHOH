@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import ReactorKit
 
 final class SearchResultCell: UICollectionViewCell {

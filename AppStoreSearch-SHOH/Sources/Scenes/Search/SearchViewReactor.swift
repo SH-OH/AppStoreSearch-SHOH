@@ -5,8 +5,8 @@
 //  Created by Jayden OH on 2021/10/22.
 //
 
-import ReactorKit
 import SPMSHOHProxy
+import ReactorKit
 
 typealias ChildInfoType = (type: SearchViewReactor.ChildType, dependency: DependencyType)
 
