@@ -38,7 +38,6 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var currency: String
         @DefaultWrapper private(set) var averageUserRating: Double
         @DefaultWrapper private(set) var contentAdvisoryRating: String
-        @DefaultWrapper private(set) var averageUserRatingForCurrentVersion: Double
         @DefaultWrapper private(set) var userRatingCountForCurrentVersion: Int
         @DefaultWrapper private(set) var trackViewUrl: String
         @DefaultWrapper private(set) var trackContentRating: String
@@ -53,35 +52,73 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var bundleId: String
         @DefaultWrapper private(set) var userRatingCount: Int
         
+        @DefaultWrapper private var averageUserRatingForCurrentVersion: Double
+        
         private(set) var releaseNotes: String?
         private(set) var formattedPrice: String?
         private(set) var fileSizeBytes: String?
         private(set) var sellerUrl: String?
         private(set) var price: Double?
+    }
+}
+
+// MARK: - Computed Properties
+
+extension SearchModel.Result {
+    private static let numberFormatter: NumberFormatter = {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        return numberFormatter
+    }()
+    
+    enum ScreenshotType {
+        case high
+        case wide
         
-        enum ScreenshotType {
-            case high
-            case wide
-            
-            var multiplier: Double {
-                switch self {
-                case .high:
-                    return 392.0/696.0
-                case .wide:
-                    return 406.0/228.0
-                }
+        var multiplier: Double {
+            switch self {
+            case .high:
+                return 392.0/696.0
+            case .wide:
+                return 406.0/228.0
             }
         }
-        
-        var screenshotType: ScreenshotType {
-            guard let slice = self.screenshotUrls.first?.components(separatedBy: "/").last?.dropLast(6) else {
-                return .high
-            }
-            
-            let split = slice.split(separator: "x")
-            let w = Int(split.first ?? "") ?? 392
-            let h = Int(split.last ?? "") ?? 696
-            return w > h ? .wide : .high
+    }
+    
+    var screenshotType: ScreenshotType {
+        guard let slice = self.screenshotUrls.first?.components(separatedBy: "/").last?.dropLast(6) else {
+            return .high
         }
+        
+        let split = slice.split(separator: "x")
+        let w = Int(split.first ?? "") ?? 392
+        let h = Int(split.last ?? "") ?? 696
+        return w > h ? .wide : .high
+    }
+    
+    var ratingDouble: Double {
+        guard let averUserRating = Self.numberFormatter
+                .string(from: self.averageUserRatingForCurrentVersion as NSNumber),
+              let ratingDouble = Double(averUserRating) else { return 0 }
+        return ratingDouble
+    }
+    
+    var ratingArray: [Double] {
+        var ratingArray: [Double] = []
+        for index in 0..<5 {
+            var rating = self.ratingDouble-Double(index)
+            switch rating {
+            case ...0:
+                rating = 0
+            case 1...:
+                rating = 1
+            default:
+                break
+            }
+            ratingArray.append(rating)
+        }
+        return ratingArray
     }
 }

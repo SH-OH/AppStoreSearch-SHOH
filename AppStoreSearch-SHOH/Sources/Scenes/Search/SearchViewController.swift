@@ -21,7 +21,6 @@ final class SearchViewController: UIViewController, StoryboardLoadable {
     }
     
     var disposeBag: DisposeBag = .init()
-    var coordinator: SearchCoordinator?
     
     private let searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -86,28 +85,21 @@ extension SearchViewController: StoryboardView {
             .bind(to: resultViewController.searchClickedEvent)
             .disposed(by: disposeBag)
         
-        Observable<SearchViewReactor.ChildType>.merge(
-            sharedSearchClicked.map({ .result }),
-            searchBar.rx.cancelButtonClicked.map({ .recent }),
-            sharedText.map({ _ in .recent })
+        Observable<SearchChildProtocol>.merge(
+            sharedSearchClicked
+                .compactMap({ [weak resultViewController] in resultViewController }),
+            searchBar.rx.cancelButtonClicked
+                .compactMap({ [weak recentViewController] in recentViewController }),
+            sharedText
+                .compactMap({ [weak recentViewController] _ in recentViewController })
         )
-            .distinctUntilChanged()
-            .map(Reactor.Action.updateChildType)
+            .distinctUntilChanged(at: \.childType)
+            .map(Reactor.Action.willChangeChild)
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     
     private func bindOutput(reactor: SearchViewReactor) {
-        reactor.state.map({ $0.childInfo })
-            .bind(onNext: { [weak self] childInfo in
-                guard let self = self else { return }
-                switch childInfo.type {
-                case .recent:
-                    self.coordinator?.changeChild(child: self.recentViewController, dependecy: childInfo.dependency)
-                    
-                case .result:
-                    self.coordinator?.changeChild(child: self.resultViewController, dependecy: childInfo.dependency)
-                }
-            }).disposed(by: disposeBag)
+        
     }
 }

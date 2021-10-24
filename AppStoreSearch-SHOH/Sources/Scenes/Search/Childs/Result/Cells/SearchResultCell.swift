@@ -53,9 +53,14 @@ extension SearchResultCell: StoryboardView {
     }
     
     private func bindInput(reactor: SearchResultCellReactor) {
-        openButton.rx.tap
-            .bind(onNext: { _ in
-                print("검색 결과의 앱 열기")
+        openButton.rx.throttleTap()
+            .withLatestFrom(
+                reactor.state.map({ $0.trackId }))
+            .compactMap({ URL(string: "\(Domain.AppStore.url)/id\($0)") })
+            .bind(onNext: { url in
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
             }).disposed(by: disposeBag)
     }
     
@@ -77,31 +82,25 @@ extension SearchResultCell: StoryboardView {
         
         let sharedRating = reactor.state.map({ $0.rating })
             .distinctUntilChanged()
-            .debug("star 00")
             .share(replay: 1)
         
         sharedRating
-            .debug("star 11")
             .compactMap({ $0[safe: 0] })
             .bind(to: starRatingImage01.rx.ratingImage)
             .disposed(by: disposeBag)
         sharedRating
-            .debug("star 22")
             .compactMap({ $0[safe: 1] })
             .bind(to: starRatingImage02.rx.ratingImage)
             .disposed(by: disposeBag)
         sharedRating
-            .debug("star 33")
             .compactMap({ $0[safe: 2] })
             .bind(to: starRatingImage03.rx.ratingImage)
             .disposed(by: disposeBag)
         sharedRating
-            .debug("star 44")
             .compactMap({ $0[safe: 3] })
             .bind(to: starRatingImage04.rx.ratingImage)
             .disposed(by: disposeBag)
         sharedRating
-            .debug("star 55")
             .compactMap({ $0[safe: 4] })
             .bind(to: starRatingImage05.rx.ratingImage)
             .disposed(by: disposeBag)

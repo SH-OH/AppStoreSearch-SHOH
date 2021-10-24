@@ -28,7 +28,7 @@ final class NetworkProvider<Target: TargetType> {
         defaultQueue: DispatchQueue? = nil
     ) {
         self.session = session
-        self.defaultQueue = defaultQueue ?? DispatchQueue(label: "NetworkProvider.default")
+        self.defaultQueue = defaultQueue ?? DispatchQueue(label: "NetworkProvider.default", qos: .utility)
     }
     
     func request<D: Decodable>(

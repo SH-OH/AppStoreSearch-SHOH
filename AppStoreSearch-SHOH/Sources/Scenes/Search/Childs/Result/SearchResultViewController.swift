@@ -30,7 +30,7 @@ final class SearchResultViewController: UIViewController, StoryboardLoadable, Se
             switch itemIdentifier {
             case let .result(item):
                 let cell = collectionView.dequeue(SearchResultCell.self, for: indexPath)
-                cell.reactor = SearchResultCellReactor(item: item)
+                cell.reactor = SearchResultCellReactor(with: item)
                 return cell
             }
         }
@@ -53,21 +53,41 @@ extension SearchResultViewController: StoryboardView {
         collectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        searchClickedEvent
-            .map(Reactor.Action.updateSearchKeyword)
+        collectionView.rx.reachedBottom()
+            .withLatestFrom(reactor.state.map({ ($0.pageNumber, $0.isEnableLoadMore) }))
+            .filter({ $0.1 })
+            .compactMap({ $0.0 })
+            .map(Reactor.Action.loadMore)
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
-        collectionView.rx.reachedBottom()
-            .withLatestFrom(reactor.state.map({ ($0.searchKeyword, $0.pageOffset+1) }))
-            .filter({ !$0.0.isEmpty })
-            .map(Reactor.Action.loadMore)
+        collectionView.rx.itemSelected
+            .withLatestFrom(
+                reactor.state.map({ $0.searchList }),
+                resultSelector: { ($0, $1) }
+            )
+            .map(Reactor.Action.didSelectItem)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        searchClickedEvent
+            .map(Reactor.Action.updateSearchKeyword)
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
     }
     
     private func bindOut(reactor: SearchResultViewReactor) {
-        reactor.state.map({ $0.searchList })
+        reactor.state.compactMap({ $0.pageNumber })
+            .distinctUntilChanged()
+            .withLatestFrom(
+                reactor.state.map({ $0.searchList }),
+                resultSelector: { ($0, $1) }
+            )
+            .map(Reactor.Action.updateDisplaySearchList)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map({ $0.displaySearchList })
             .distinctUntilChanged()
             .map(Reactor.Action.updateSnapshot)
             .bind(to: reactor.action)

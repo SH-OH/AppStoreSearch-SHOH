@@ -47,6 +47,8 @@
 		09B561122721FF1400D45733 /* SearchRecentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B561112721FF1400D45733 /* SearchRecentCell.xib */; };
 		09B78DF12724098200CFFBBD /* SearchResultReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B78DF02724098200CFFBBD /* SearchResultReviewCell.swift */; };
 		09B78DF3272409A500CFFBBD /* SearchResultReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B78DF2272409A500CFFBBD /* SearchResultReviewCell.xib */; };
+		09B78DF82724582800CFFBBD /* MoreAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B78DF72724582800CFFBBD /* MoreAppView.swift */; };
+		09B78DFA2724584000CFFBBD /* MoreAppView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B78DF92724584000CFFBBD /* MoreAppView.xib */; };
 		09E292A62722AF3D00866EF5 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 098365862722AEC300C3F7E9 /* SearchResultCell.xib */; };
 		09E292A72722AF3F00866EF5 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098365852722AEC300C3F7E9 /* SearchResultCell.swift */; };
 		09E292A92722C4FF00866EF5 /* SearchResultCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292A82722C4FF00866EF5 /* SearchResultCellReactor.swift */; };
@@ -129,6 +131,8 @@
 		09B561112721FF1400D45733 /* SearchRecentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchRecentCell.xib; sourceTree = "<group>"; };
 		09B78DF02724098200CFFBBD /* SearchResultReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultReviewCell.swift; sourceTree = "<group>"; };
 		09B78DF2272409A500CFFBBD /* SearchResultReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultReviewCell.xib; sourceTree = "<group>"; };
+		09B78DF72724582800CFFBBD /* MoreAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreAppView.swift; sourceTree = "<group>"; };
+		09B78DF92724584000CFFBBD /* MoreAppView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreAppView.xib; sourceTree = "<group>"; };
 		09E292A82722C4FF00866EF5 /* SearchResultCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellReactor.swift; sourceTree = "<group>"; };
 		09E292AA2722C64700866EF5 /* Reactive+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extensions.swift"; sourceTree = "<group>"; };
 		09E292AC2722DACB00866EF5 /* Number+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 		09B560CA2721629700D45733 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				09B78DF4272457A900CFFBBD /* Common */,
 				09B560FD2721D0FB00D45733 /* Main */,
 				09B560F12721C11400D45733 /* Search */,
 			);
@@ -446,6 +451,31 @@
 				09B561112721FF1400D45733 /* SearchRecentCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		09B78DF4272457A900CFFBBD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				09B78DF5272457C000CFFBBD /* Components */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		09B78DF5272457C000CFFBBD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				09B78DF6272457CC00CFFBBD /* MoreAppView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		09B78DF6272457CC00CFFBBD /* MoreAppView */ = {
+			isa = PBXGroup;
+			children = (
+				09B78DF72724582800CFFBBD /* MoreAppView.swift */,
+				09B78DF92724584000CFFBBD /* MoreAppView.xib */,
+			);
+			path = MoreAppView;
 			sourceTree = "<group>";
 		};
 		09E292B52723647400866EF5 /* Detail */ = {
@@ -591,7 +621,7 @@
 			);
 			mainGroup = 09B5608327215ADF00D45733;
 			packageReferences = (
-				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */,
+				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */,
 			);
 			productRefGroup = 09B5608D27215ADF00D45733 /* Products */;
 			projectDirPath = "";
@@ -613,6 +643,7 @@
 				09E292C227237CA700866EF5 /* SearchResultDetailCell.xib in Resources */,
 				09E292BB272364CB00866EF5 /* SearchResultDetailViewController.storyboard in Resources */,
 				09B5609C27215AE100D45733 /* LaunchScreen.storyboard in Resources */,
+				09B78DFA2724584000CFFBBD /* MoreAppView.xib in Resources */,
 				09B561122721FF1400D45733 /* SearchRecentCell.xib in Resources */,
 				09B5609927215AE100D45733 /* Assets.xcassets in Resources */,
 				09B561022721D43300D45733 /* SearchRecentViewController.storyboard in Resources */,
@@ -780,6 +811,7 @@
 				09E292B7272364B200866EF5 /* SearchResultDetailViewController.swift in Sources */,
 				09E292AF2723301200866EF5 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				09B561082721E30400D45733 /* SearchChildProtocol.swift in Sources */,
+				09B78DF82724582800CFFBBD /* MoreAppView.swift in Sources */,
 				09B560DE2721724F00D45733 /* Cachable.swift in Sources */,
 				09B560F72721C1FC00D45733 /* MainCoordinator.swift in Sources */,
 				09E292A92722C4FF00866EF5 /* SearchResultCellReactor.swift in Sources */,
@@ -1164,7 +1196,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */ = {
+		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SH-OH/SPMSHOHProxy.git";
 			requirement = {
@@ -1177,7 +1209,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		09B560C027215B4D00D45733 /* SPMSHOHProxy */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */;
+			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */;
 			productName = SPMSHOHProxy;
 		};
 /* End XCSwiftPackageProductDependency section */

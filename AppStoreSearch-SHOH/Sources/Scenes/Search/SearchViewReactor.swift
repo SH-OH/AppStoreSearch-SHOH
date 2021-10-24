@@ -8,51 +8,64 @@
 import SPMSHOHProxy
 import ReactorKit
 
-typealias ChildInfoType = (type: SearchViewReactor.ChildType, dependency: DependencyType)
-
-final class SearchViewReactor: Reactor {
+final class SearchViewReactor: Reactor, Coordinatable {
+    struct Dependency: DependencyType {
+        let useCase: SearchUseCase
+        let coordinator: CoordinatorType
+    }
+    
     enum ChildType {
         case recent
         case result
     }
     
     enum Action {
-        case updateChildType(ChildType)
+        case willChangeChild(SearchChildProtocol)
     }
     
     enum Mutation {
-        case setChildType(ChildInfoType)
+        
     }
     
     struct State {
-        var childInfo: ChildInfoType
+        
     }
     
     let initialState: State
+    let coordinator: CoordinatorType?
     private let useCase: SearchUseCase
     
-    init(useCase: SearchUseCase) {
-        let dependency = SearchResultViewReactor.Dependency(useCase: useCase)
+    init(with dependency: DependencyType? = nil) {
         self.initialState = .init(
-            childInfo: (.recent, dependency)
+            
         )
-        self.useCase = useCase
+        
+        let dependency = dependency as? Dependency
+        self.useCase = dependency?.useCase ?? .init()
+        self.coordinator = dependency?.coordinator
     }
 }
 
 extension SearchViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case let .updateChildType(childType):
-            switch childType {
+        case let .willChangeChild(child):
+            guard let coordinator = self.coordinator else { return .empty() }
+            switch child.childType {
             case .recent:
-                let dependency = SearchResultViewReactor.Dependency(useCase: self.useCase)
-                return Observable.just(Mutation.setChildType((childType, dependency)))
+                let dependency = SearchRecentViewReactor.Dependency(useCase: self.useCase, child: child)
+                coordinator.navigate(to: SearchCoordinator.Navigation.changeTochild, with: dependency)
                 
             case .result:
-                let dependency = SearchResultViewReactor.Dependency(useCase: self.useCase)
-                return Observable.just(Mutation.setChildType((childType, dependency)))
+                let dependency = SearchResultViewReactor.Dependency(
+                    useCase: self.useCase,
+                    coordinator: coordinator,
+                    child: child
+                )
+                coordinator.navigate(to: SearchCoordinator.Navigation.changeTochild, with: dependency)
             }
+            
+            return .empty()
         }
     }
 }
@@ -61,8 +74,7 @@ extension SearchViewReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case let .setChildType(childInfo):
-            newState.childInfo = childInfo
+        
         }
         return newState
     }

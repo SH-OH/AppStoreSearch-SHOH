@@ -14,7 +14,6 @@ enum SearchService {
     
     case getSearchList(
         term: String,
-        offset: Int,
         limit: Int,
         country: CountryType
     )
@@ -22,7 +21,7 @@ enum SearchService {
 
 extension SearchService: TargetType {
     var baseURL: URL {
-        return URL(string: Domain.AppStore.url)!
+        return URL(string: Domain.ItunesStore.url)!
     }
     
     var path: String {
@@ -49,9 +48,8 @@ extension SearchService: TargetType {
     var task: Task {
         var params: [String: Any] = [:]
         switch self {
-        case let .getSearchList(term, offset, limit, country):
+        case let .getSearchList(term, limit, country):
             params["term"] = term
-            params["offset"] = offset
             params["limit"] = limit
             params["entity"] = "software"
             params["country"] = country.rawValue

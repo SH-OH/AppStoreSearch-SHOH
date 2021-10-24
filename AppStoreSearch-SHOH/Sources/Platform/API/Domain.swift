@@ -8,12 +8,16 @@
 import Foundation
 
 enum Domain {
+    case ItunesStore
     case AppStore
     
     var url: String {
         switch self {
-        case .AppStore:
+        case .ItunesStore:
             return "https://itunes.apple.com"
+        
+        case .AppStore:
+            return "itms-apps://apple.com/app"
         }
     }
 }

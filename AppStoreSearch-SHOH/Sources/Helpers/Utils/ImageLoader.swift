@@ -26,11 +26,11 @@ final class ImageLoader {
         var queue: DispatchQueue {
             switch self {
             case .default:
-                return DispatchQueue(label: "ImageLoader.default")
+                return DispatchQueue(label: "ImageLoader.default", qos: .utility)
             case .imageProcess:
-                return DispatchQueue(label: "ImageLoader.imageProcess")
+                return DispatchQueue(label: "ImageLoader.imageProcess", qos: .userInitiated)
             case .cache:
-                return DispatchQueue(label: "ImageLoader.imageCache")
+                return DispatchQueue(label: "ImageLoader.imageCache", qos: .background)
             }
         }
     }

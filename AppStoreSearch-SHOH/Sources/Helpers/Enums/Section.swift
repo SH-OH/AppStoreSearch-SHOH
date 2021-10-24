@@ -11,6 +11,6 @@ enum Section {
     case result
     
     enum Item: Hashable {
-        case result(SearchResultCellReactor.Item)
+        case result(SearchResultCellReactor.Dependency)
     }
 }

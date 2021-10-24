@@ -40,3 +40,12 @@ extension Reactive where Base: UICollectionView {
         return ControlEvent(events: source)
     }
 }
+
+extension Reactive where Base: UIButton {
+    func throttleTap(_ dueTime: RxTimeInterval = .milliseconds(400)) -> ControlEvent<Void> {
+        let source = base.rx.tap
+            .throttle(dueTime, latest: false, scheduler: MainScheduler.instance)
+        
+        return ControlEvent(events: source)
+    }
+}

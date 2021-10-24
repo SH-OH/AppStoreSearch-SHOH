@@ -6,12 +6,14 @@
 //
 
 import Foundation
+
+import SPMSHOHProxy
 import ReactorKit
-import UIKit
 
 final class SearchResultCellReactor: Reactor {
-    struct Item {
-        let uuid: UUID
+    struct Dependency: DependencyType {
+        let uuid: String
+        let trackId: Int
         let artworkUrl60: String
         let trackName: String
         let description: String
@@ -20,37 +22,13 @@ final class SearchResultCellReactor: Reactor {
         let screenshotType: SearchModel.Result.ScreenshotType
         let screenshotUrls: [String]
         
-        private static var numberFormatter: NumberFormatter {
-            let numberFormatter = NumberFormatter()
-            numberFormatter.numberStyle = .decimal
-            numberFormatter.minimumFractionDigits = 2
-            numberFormatter.maximumFractionDigits = 2
-            return numberFormatter
-        }
-        
         init(_ result: SearchModel.Result) {
-            let averUserRating = Self.numberFormatter.string(from: result.averageUserRatingForCurrentVersion as NSNumber) ?? "0"
-            let ratingToDouble = Double(averUserRating) ?? 0
-            
-            var ratingArray: [Double] = []
-            for index in 0..<5 {
-                var rating = ratingToDouble-Double(index)
-                switch rating {
-                case ...0:
-                    rating = 0
-                case 1...:
-                    rating = 1
-                default:
-                    break
-                }
-                ratingArray.append(rating)
-            }
-            
-            self.uuid = UUID()
+            self.uuid = UUID().uuidString
+            self.trackId = result.trackId
             self.artworkUrl60 = result.artworkUrl60
             self.trackName = result.trackName
             self.description = result.description
-            self.ratingArray = ratingArray
+            self.ratingArray = result.ratingArray
             self.userRatingCount = result.userRatingCountForCurrentVersion.toUserCountStringValue
             self.screenshotType = result.screenshotType
             self.screenshotUrls = result.screenshotUrls
@@ -58,7 +36,7 @@ final class SearchResultCellReactor: Reactor {
     }
     
     enum Action {
-        case open
+        
     }
     
     enum Mutation {
@@ -67,6 +45,7 @@ final class SearchResultCellReactor: Reactor {
     
     struct State {
         var artworkUrl: String
+        var trackId: Int
         var trackName: String
         var description: String
         var rating: [Double]
@@ -77,26 +56,38 @@ final class SearchResultCellReactor: Reactor {
     
     let initialState: State
     
-    init(item: Item) {
+    init(with dependency: DependencyType) {
+        let dependency = dependency as? Dependency
+        
+        let artworkUrl = dependency?.artworkUrl60 ?? ""
+        let trackId = dependency?.trackId ?? 0
+        let trackName = dependency?.trackName ?? ""
+        let description = dependency?.description ?? ""
+        let rating = dependency?.ratingArray ?? []
+        let userRatingCount = dependency?.userRatingCount ?? ""
+        let screenshotType = dependency?.screenshotType ?? .high
+        let screenshotUrls = dependency?.screenshotUrls ?? []
+        
         self.initialState = .init(
-            artworkUrl: item.artworkUrl60,
-            trackName: item.trackName,
-            description: item.description,
-            rating: item.ratingArray,
-            userRatingCount: item.userRatingCount,
-            screenshotType: item.screenshotType,
-            screenshotUrls: item.screenshotUrls
+            artworkUrl: artworkUrl,
+            trackId: trackId,
+            trackName: trackName,
+            description: description,
+            rating: rating,
+            userRatingCount: userRatingCount,
+            screenshotType: screenshotType,
+            screenshotUrls: screenshotUrls
         )
     }
     
 }
 
-extension SearchResultCellReactor.Item: Hashable {
+extension SearchResultCellReactor.Dependency: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(uuid)
     }
     
-    static func == (lhs: SearchResultCellReactor.Item, rhs: SearchResultCellReactor.Item) -> Bool {
+    static func == (lhs: SearchResultCellReactor.Dependency, rhs: SearchResultCellReactor.Dependency) -> Bool {
         return lhs.uuid == rhs.uuid
     }
 }

@@ -28,22 +28,39 @@ final class SearchResultDetailViewController: UIViewController, StoryboardLoadab
     /// 메인
     @IBOutlet private weak var trackImage: UIImageView!
     @IBOutlet private weak var trackNameLabel: UILabel!
-    /// 진입하고 3초 이후 description으로 변경
-    @IBOutlet private weak var artistLabel: UILabel!
+    /// 진입하고 3초 이후 description으로 변경 및 lookup api 추가 후 artist 상태 일 경우 보여주기
+    @IBOutlet private weak var artistNameLabel: UILabel!
     @IBOutlet private weak var openButton: UIButton!
-    @IBOutlet private weak var moreButton: UIButton!
-    @IBOutlet private weak var ratingLabel01: UILabel!
-    @IBOutlet private weak var ratingCountLabel01: UILabel!
+    @IBOutlet private weak var shareButton: UIButton!
     
-    /// 평점 별(채우기 용)
-    @IBOutlet private weak var ratingStarImage01: UIImageView!
-    @IBOutlet private weak var ratingStarImage02: UIImageView!
-    @IBOutlet private weak var ratingStarImage03: UIImageView!
-    @IBOutlet private weak var ratingStarImage04: UIImageView!
-    @IBOutlet private weak var ratingStarImage05: UIImageView!
+    /// 요약 - 리뷰
+    @IBOutlet private weak var summaryReviewView: UIView!
+    @IBOutlet private weak var summaryRatingCountLabel: UILabel!
+    @IBOutlet private weak var summaryRatingLabel: UILabel!
+    @IBOutlet private weak var summaryRatingStarImage01: UIImageView!
+    @IBOutlet private weak var summaryRatingStarImage02: UIImageView!
+    @IBOutlet private weak var summaryRatingStarImage03: UIImageView!
+    @IBOutlet private weak var summaryRatingStarImage04: UIImageView!
+    @IBOutlet private weak var summaryRatingStarImage05: UIImageView!
     
-    @IBOutlet private weak var rankLabel: UILabel!
-    @IBOutlet private weak var contentsRatingLabel01: UILabel!
+    /// 요약 - 연령 등급
+    @IBOutlet private weak var summaryContentRatingView: UIView!
+    @IBOutlet private weak var summaryContentRatingLabel: UILabel!
+    
+    /// 요약 - 차트
+    @IBOutlet private weak var summaryRankView: UIView!
+    @IBOutlet private weak var summaryRankLabel: UILabel!
+    
+    /// 요약 - 아티스트
+    @IBOutlet private weak var summaryArtistView: UIView!
+    @IBOutlet private weak var summaryArtistNameLabel: UILabel!
+    
+    /// 요약 - 언어
+    @IBOutlet private weak var summaryLanguageView: UIView!
+    @IBOutlet private weak var summaryLanguageCodeLabel: UILabel!
+    /// 1개면
+    @IBOutlet private weak var summaryLanguageLabel: UILabel!
+    
     
     // 02.새로운 기능
     @IBOutlet private weak var curVersionLabel: UILabel!
@@ -72,7 +89,7 @@ final class SearchResultDetailViewController: UIViewController, StoryboardLoadab
     @IBOutlet private weak var supportAppButton: UIButton!
     
     // 07.정보
-    @IBOutlet private weak var artistNameLabel: UILabel!
+    @IBOutlet private weak var artistNameLabel2: UILabel!
     @IBOutlet private weak var fileSizeLabel: UILabel!
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var supportedDownButton: UIButton!

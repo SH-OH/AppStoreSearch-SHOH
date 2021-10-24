@@ -17,15 +17,13 @@ struct SearchUseCase {
     
     func fetchSearchList(
         query: String,
-        offset: Int = 0,
-        limit: Int = 50,
+        limit: Int = 200,
         country: SearchService.CountryType = .KR
     ) -> Observable<[SearchModel.Result]> {
         return provider.request(
             SearchModel.self,
             target: .getSearchList(
                 term: query,
-                offset: offset,
                 limit: limit,
                 country: country
             )

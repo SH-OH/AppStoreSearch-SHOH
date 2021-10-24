@@ -14,7 +14,7 @@ final class AppCoordinator: CoordinatorType {
         let window: UIWindow?
     }
     
-    func start(with dependency: DependencyType? = nil) {
+    func start(with dependency: DependencyType) {
         guard let dependency = dependency as? Dependency else {
             return
         }
@@ -24,7 +24,8 @@ final class AppCoordinator: CoordinatorType {
         dependency.window?.makeKeyAndVisible()
         
         let mainCoordinator = MainCoordinator(rootNavigationController)
-        coordinate(to: mainCoordinator, with: nil)
+        mainCoordinator.start()
     }
     
+    func navigate(to navigation: NavigationType, with dependency: DependencyType) {}
 }
