@@ -1,5 +1,6 @@
 PODS:
   - ActiveLabel (1.1.0)
+  - DeviceKit (4.5.1)
   - ReactorKit (3.1.0):
     - RxSwift (~> 6.0)
     - WeakMapTable (~> 1.1)
@@ -24,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - ActiveLabel
+  - DeviceKit
   - ReactorKit
   - RxCocoa
   - RxExpect (from `https://github.com/SH-OH/RxExpect.git`, branch `develop`)
@@ -35,6 +37,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - ActiveLabel
+    - DeviceKit
     - ReactorKit
     - RxCocoa
     - RxGesture
@@ -57,6 +60,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
+  DeviceKit: 8664c09f619f53e48000b41ee3bb7573158a333b
   ReactorKit: a06dd2a5c9339287aedf3dc821cfab6347eca106
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxExpect: 0a0e5a8c5bbd042d892a4bc653f3484395605886
@@ -68,6 +72,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 47c26fd3957f5849b2afe33db5470b1e439264e8
+PODFILE CHECKSUM: 6a45470fd14d2a7f2c9729c69af928622e05d107
 
 COCOAPODS: 1.11.2

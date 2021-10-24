@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092FAE522725696C007E0727 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE512725696C007E0727 /* Date+Extensions.swift */; };
 		0983657927220D6F00C3F7E9 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983657827220D6F00C3F7E9 /* SearchResultViewController.swift */; };
 		0983657D27220E9800C3F7E9 /* SearchResultViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983657C27220E9800C3F7E9 /* SearchResultViewReactor.swift */; };
 		0983657F27220EAC00C3F7E9 /* SearchResultViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0983657E27220EAC00C3F7E9 /* SearchResultViewController.storyboard */; };
@@ -63,9 +64,9 @@
 		09E292BD272379C700866EF5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BC272379C700866EF5 /* UIView+Extensions.swift */; };
 		09E292C027237C5E00866EF5 /* SearchResultDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */; };
 		09E292C227237CA700866EF5 /* SearchResultDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */; };
-		142B3FD1EE5E4499D7AB86DF /* Pods_AppStoreSearch_SHOHUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F856E81AADB7B3D4D1012D /* Pods_AppStoreSearch_SHOHUITests.framework */; };
-		63A8C79ED17104322BE49535 /* Pods_AppStoreSearch_SHOHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C5EE1066F311F238C7C99B /* Pods_AppStoreSearch_SHOHTests.framework */; };
-		8733352315C4933F7A1F8319 /* Pods_AppStoreSearch_SHOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4402E934557EC87EA6663358 /* Pods_AppStoreSearch_SHOH.framework */; };
+		970061BA9593BBCEBBFE0232 /* Pods_AppStoreSearch_SHOHUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B851D02DFB04682695E6C7 /* Pods_AppStoreSearch_SHOHUITests.framework */; };
+		C99DDFBEFBF8BE27EB21E07C /* Pods_AppStoreSearch_SHOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BA3ADB9608F40FF4404324 /* Pods_AppStoreSearch_SHOH.framework */; };
+		F2E31AA7282DE5C0DEBDFDA1 /* Pods_AppStoreSearch_SHOHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1BD59DCE466A1BF57F7B2E /* Pods_AppStoreSearch_SHOHTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		092FAE512725696C007E0727 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		0983657827220D6F00C3F7E9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		0983657C27220E9800C3F7E9 /* SearchResultViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewReactor.swift; sourceTree = "<group>"; };
 		0983657E27220EAC00C3F7E9 /* SearchResultViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultViewController.storyboard; sourceTree = "<group>"; };
@@ -145,15 +147,15 @@
 		09E292BC272379C700866EF5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailCell.swift; sourceTree = "<group>"; };
 		09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultDetailCell.xib; sourceTree = "<group>"; };
-		0E4FB6870DFB46E87C1969CE /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHUITests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests.release.xcconfig"; sourceTree = "<group>"; };
-		0F3B7B36FF8C9373DF0C8CC5 /* Pods-AppStoreSearch-SHOHUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHUITests.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		125C098A9BC1210BE751E1BD /* Pods-AppStoreSearch-SHOH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOH.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH.release.xcconfig"; sourceTree = "<group>"; };
-		4402E934557EC87EA6663358 /* Pods_AppStoreSearch_SHOH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F75A11B39D84CA6974DEA79 /* Pods-AppStoreSearch-SHOH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOH.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH.debug.xcconfig"; sourceTree = "<group>"; };
-		9244E0D0AA5F0861E8A4FD52 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.release.xcconfig"; sourceTree = "<group>"; };
-		A2C5EE1066F311F238C7C99B /* Pods_AppStoreSearch_SHOHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOHTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F856E81AADB7B3D4D1012D /* Pods_AppStoreSearch_SHOHUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOHUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE137B8819767F3F6975BC8F /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.debug.xcconfig"; sourceTree = "<group>"; };
+		25936B0BBB7BB429F0D1689B /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.debug.xcconfig"; sourceTree = "<group>"; };
+		65B8A476693659F1BACF0264 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.release.xcconfig"; sourceTree = "<group>"; };
+		97BA3ADB9608F40FF4404324 /* Pods_AppStoreSearch_SHOH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B851D02DFB04682695E6C7 /* Pods_AppStoreSearch_SHOHUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOHUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A661ED12201096ACEA6EEAAD /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHUITests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AC1BD59DCE466A1BF57F7B2E /* Pods_AppStoreSearch_SHOHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOHTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD438DB6FEF9A9B47E0A76E3 /* Pods-AppStoreSearch-SHOH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOH.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH.debug.xcconfig"; sourceTree = "<group>"; };
+		AF14668366BB345D69B1940B /* Pods-AppStoreSearch-SHOHUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHUITests.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E852A181C0DA65039C556350 /* Pods-AppStoreSearch-SHOH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOH.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09B560C127215B4D00D45733 /* SPMSHOHProxy in Frameworks */,
-				8733352315C4933F7A1F8319 /* Pods_AppStoreSearch_SHOH.framework in Frameworks */,
+				C99DDFBEFBF8BE27EB21E07C /* Pods_AppStoreSearch_SHOH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A8C79ED17104322BE49535 /* Pods_AppStoreSearch_SHOHTests.framework in Frameworks */,
+				F2E31AA7282DE5C0DEBDFDA1 /* Pods_AppStoreSearch_SHOHTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				142B3FD1EE5E4499D7AB86DF /* Pods_AppStoreSearch_SHOHUITests.framework in Frameworks */,
+				970061BA9593BBCEBBFE0232 /* Pods_AppStoreSearch_SHOHUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +216,7 @@
 				09B560AF27215AE100D45733 /* AppStoreSearch-SHOHUITests */,
 				09B5608D27215ADF00D45733 /* Products */,
 				9CF7ED847F384016C3ABB158 /* Pods */,
-				EBFB7B945F643BCDB545F372 /* Frameworks */,
+				D8414F24610DC2F8CC5A9800 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,6 +297,7 @@
 		09B560C62721623E00D45733 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				092FAE512725696C007E0727 /* Date+Extensions.swift */,
 				09B560D627216C6500D45733 /* ImageView+Extensions.swift */,
 				09E292AE2723301200866EF5 /* NSLayoutConstraint+Extensions.swift */,
 				09E292AC2722DACB00866EF5 /* Number+Extensions.swift */,
@@ -503,22 +506,22 @@
 		9CF7ED847F384016C3ABB158 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7F75A11B39D84CA6974DEA79 /* Pods-AppStoreSearch-SHOH.debug.xcconfig */,
-				125C098A9BC1210BE751E1BD /* Pods-AppStoreSearch-SHOH.release.xcconfig */,
-				EE137B8819767F3F6975BC8F /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */,
-				9244E0D0AA5F0861E8A4FD52 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */,
-				0F3B7B36FF8C9373DF0C8CC5 /* Pods-AppStoreSearch-SHOHUITests.debug.xcconfig */,
-				0E4FB6870DFB46E87C1969CE /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */,
+				AD438DB6FEF9A9B47E0A76E3 /* Pods-AppStoreSearch-SHOH.debug.xcconfig */,
+				E852A181C0DA65039C556350 /* Pods-AppStoreSearch-SHOH.release.xcconfig */,
+				25936B0BBB7BB429F0D1689B /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */,
+				65B8A476693659F1BACF0264 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */,
+				AF14668366BB345D69B1940B /* Pods-AppStoreSearch-SHOHUITests.debug.xcconfig */,
+				A661ED12201096ACEA6EEAAD /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EBFB7B945F643BCDB545F372 /* Frameworks */ = {
+		D8414F24610DC2F8CC5A9800 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4402E934557EC87EA6663358 /* Pods_AppStoreSearch_SHOH.framework */,
-				A2C5EE1066F311F238C7C99B /* Pods_AppStoreSearch_SHOHTests.framework */,
-				B1F856E81AADB7B3D4D1012D /* Pods_AppStoreSearch_SHOHUITests.framework */,
+				97BA3ADB9608F40FF4404324 /* Pods_AppStoreSearch_SHOH.framework */,
+				AC1BD59DCE466A1BF57F7B2E /* Pods_AppStoreSearch_SHOHTests.framework */,
+				A5B851D02DFB04682695E6C7 /* Pods_AppStoreSearch_SHOHUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -530,11 +533,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09B560B627215AE100D45733 /* Build configuration list for PBXNativeTarget "AppStoreSearch-SHOH" */;
 			buildPhases = (
-				8D220E1373729FD4C2AF7D17 /* [CP] Check Pods Manifest.lock */,
+				D2632BF7E5D2F7FB66E39264 /* [CP] Check Pods Manifest.lock */,
 				09B5608827215ADF00D45733 /* Sources */,
 				09B5608927215ADF00D45733 /* Frameworks */,
 				09B5608A27215ADF00D45733 /* Resources */,
-				6638EE8C9EC736C5694AB605 /* [CP] Embed Pods Frameworks */,
+				A4E2E60EFD7BE466D66C122F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -552,11 +555,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09B560B927215AE100D45733 /* Build configuration list for PBXNativeTarget "AppStoreSearch-SHOHTests" */;
 			buildPhases = (
-				DAA384DE8DFA946AA1243B68 /* [CP] Check Pods Manifest.lock */,
+				C11CCCBE48E6A5FB3AD706B4 /* [CP] Check Pods Manifest.lock */,
 				09B5609E27215AE100D45733 /* Sources */,
 				09B5609F27215AE100D45733 /* Frameworks */,
 				09B560A027215AE100D45733 /* Resources */,
-				6FC82E5C1939469533F97216 /* [CP] Embed Pods Frameworks */,
+				273EC5A0CD371FE8EA951E98 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -572,11 +575,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09B560BC27215AE100D45733 /* Build configuration list for PBXNativeTarget "AppStoreSearch-SHOHUITests" */;
 			buildPhases = (
-				3D4CE7444156FD836CF716F9 /* [CP] Check Pods Manifest.lock */,
+				273763BE133B638BA6F68541 /* [CP] Check Pods Manifest.lock */,
 				09B560A827215AE100D45733 /* Sources */,
 				09B560A927215AE100D45733 /* Frameworks */,
 				09B560AA27215AE100D45733 /* Resources */,
-				EE356D53388FD21D7EE3E7CF /* [CP] Embed Pods Frameworks */,
+				B2C106D0A88D45310B7C93F8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -621,7 +624,7 @@
 			);
 			mainGroup = 09B5608327215ADF00D45733;
 			packageReferences = (
-				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */,
+				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */,
 			);
 			productRefGroup = 09B5608D27215ADF00D45733 /* Products */;
 			projectDirPath = "";
@@ -670,7 +673,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D4CE7444156FD836CF716F9 /* [CP] Check Pods Manifest.lock */ = {
+		273763BE133B638BA6F68541 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -692,24 +695,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6638EE8C9EC736C5694AB605 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6FC82E5C1939469533F97216 /* [CP] Embed Pods Frameworks */ = {
+		273EC5A0CD371FE8EA951E98 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -726,29 +712,41 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D220E1373729FD4C2AF7D17 /* [CP] Check Pods Manifest.lock */ = {
+		A4E2E60EFD7BE466D66C122F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppStoreSearch-SHOH-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOH/Pods-AppStoreSearch-SHOH-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DAA384DE8DFA946AA1243B68 /* [CP] Check Pods Manifest.lock */ = {
+		B2C106D0A88D45310B7C93F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C11CCCBE48E6A5FB3AD706B4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -770,21 +768,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EE356D53388FD21D7EE3E7CF /* [CP] Embed Pods Frameworks */ = {
+		D2632BF7E5D2F7FB66E39264 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppStoreSearch-SHOH-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppStoreSearch-SHOHUITests/Pods-AppStoreSearch-SHOHUITests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -817,6 +820,7 @@
 				09E292A92722C4FF00866EF5 /* SearchResultCellReactor.swift in Sources */,
 				09B560FB2721C5B700D45733 /* SearchCoordinator.swift in Sources */,
 				09B560DA2721718400D45733 /* ImageCache.swift in Sources */,
+				092FAE522725696C007E0727 /* Date+Extensions.swift in Sources */,
 				09B561062721E1BC00D45733 /* SearchRecentViewReactor.swift in Sources */,
 				09B5609027215ADF00D45733 /* AppDelegate.swift in Sources */,
 				098365812722250E00C3F7E9 /* SearchUseCase.swift in Sources */,
@@ -1000,7 +1004,7 @@
 		};
 		09B560B727215AE100D45733 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F75A11B39D84CA6974DEA79 /* Pods-AppStoreSearch-SHOH.debug.xcconfig */;
+			baseConfigurationReference = AD438DB6FEF9A9B47E0A76E3 /* Pods-AppStoreSearch-SHOH.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1028,7 +1032,7 @@
 		};
 		09B560B827215AE100D45733 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 125C098A9BC1210BE751E1BD /* Pods-AppStoreSearch-SHOH.release.xcconfig */;
+			baseConfigurationReference = E852A181C0DA65039C556350 /* Pods-AppStoreSearch-SHOH.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1056,7 +1060,7 @@
 		};
 		09B560BA27215AE100D45733 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE137B8819767F3F6975BC8F /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */;
+			baseConfigurationReference = 25936B0BBB7BB429F0D1689B /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1082,7 +1086,7 @@
 		};
 		09B560BB27215AE100D45733 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9244E0D0AA5F0861E8A4FD52 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */;
+			baseConfigurationReference = 65B8A476693659F1BACF0264 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1108,7 +1112,7 @@
 		};
 		09B560BD27215AE100D45733 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F3B7B36FF8C9373DF0C8CC5 /* Pods-AppStoreSearch-SHOHUITests.debug.xcconfig */;
+			baseConfigurationReference = AF14668366BB345D69B1940B /* Pods-AppStoreSearch-SHOHUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1132,7 +1136,7 @@
 		};
 		09B560BE27215AE100D45733 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E4FB6870DFB46E87C1969CE /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */;
+			baseConfigurationReference = A661ED12201096ACEA6EEAAD /* Pods-AppStoreSearch-SHOHUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
@@ -1196,7 +1200,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */ = {
+		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SH-OH/SPMSHOHProxy.git";
 			requirement = {
@@ -1209,7 +1213,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		09B560C027215B4D00D45733 /* SPMSHOHProxy */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */;
+			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */;
 			productName = SPMSHOHProxy;
 		};
 /* End XCSwiftPackageProductDependency section */

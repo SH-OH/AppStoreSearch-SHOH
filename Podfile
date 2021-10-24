@@ -7,6 +7,7 @@ def default_pods
   pod 'ReactorKit'
   pod 'SnapKit'
   pod 'Then'
+  pod 'DeviceKit'
 
   rx_pods
 end

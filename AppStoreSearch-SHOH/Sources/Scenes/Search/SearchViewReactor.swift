@@ -53,7 +53,10 @@ extension SearchViewReactor {
             guard let coordinator = self.coordinator else { return .empty() }
             switch child.childType {
             case .recent:
-                let dependency = SearchRecentViewReactor.Dependency(useCase: self.useCase, child: child)
+                let dependency = SearchRecentViewReactor.Dependency(
+                    useCase: self.useCase,
+                    child: child
+                )
                 coordinator.navigate(to: SearchCoordinator.Navigation.changeTochild, with: dependency)
                 
             case .result:

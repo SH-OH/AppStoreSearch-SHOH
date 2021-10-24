@@ -1,6 +1,0 @@
-framework module Pods_AppStoreSearch_SHOHUITests {
-  umbrella header "Pods-AppStoreSearch-SHOHUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
