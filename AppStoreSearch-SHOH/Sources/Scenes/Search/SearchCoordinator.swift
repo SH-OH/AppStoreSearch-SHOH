@@ -56,6 +56,21 @@ final class SearchCoordinator: CoordinatorType {
 extension SearchCoordinator {
     private func navigateToDetail(with dependency: DependencyType) {
         let viewController = SearchResultDetailViewController.storyboard()
+        let standard = UINavigationBarAppearance.create(
+            configType: .opaque,
+            backgroundColor: .white,
+            hasBottomLine: false
+        )
+        let scroll = UINavigationBarAppearance.create(
+            configType: .transparent,
+            backgroundColor: .systemGray6.withAlphaComponent(0.95),
+            hasBottomLine: true
+        )
+        
+        viewController.navigationItem.standardAppearance = standard
+        viewController.navigationItem.scrollEdgeAppearance = scroll
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        
         let reactor = SearchResultDetailViewReactor(with: dependency)
         
         viewController.reactor = reactor

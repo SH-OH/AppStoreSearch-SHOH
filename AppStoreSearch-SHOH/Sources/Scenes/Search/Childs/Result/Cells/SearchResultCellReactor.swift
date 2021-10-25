@@ -19,7 +19,7 @@ final class SearchResultCellReactor: Reactor {
         let description: String
         let ratingArray: [Double]
         let userRatingCount: String
-        let screenshotType: SearchModel.Result.ScreenshotType
+        let screenshotType: ScreenshotType
         let screenshotUrls: [String]
         
         init(_ result: SearchModel.Result) {
@@ -50,23 +50,23 @@ final class SearchResultCellReactor: Reactor {
         var description: String
         var rating: [Double]
         var userRatingCount: String
-        var screenshotType: SearchModel.Result.ScreenshotType
+        var screenshotType: ScreenshotType
         var screenshotUrls: [String]
     }
     
     let initialState: State
     
     init(with dependency: DependencyType) {
-        let dependency = dependency as? Dependency
+        let dependency = dependency.cast(Dependency.self)
         
-        let artworkUrl = dependency?.artworkUrl60 ?? ""
-        let trackId = dependency?.trackId ?? 0
-        let trackName = dependency?.trackName ?? ""
-        let description = dependency?.description ?? ""
-        let rating = dependency?.ratingArray ?? []
-        let userRatingCount = dependency?.userRatingCount ?? ""
-        let screenshotType = dependency?.screenshotType ?? .high
-        let screenshotUrls = dependency?.screenshotUrls ?? []
+        let artworkUrl = dependency.artworkUrl60
+        let trackId = dependency.trackId
+        let trackName = dependency.trackName
+        let description = dependency.description
+        let rating = dependency.ratingArray
+        let userRatingCount = dependency.userRatingCount
+        let screenshotType = dependency.screenshotType
+        let screenshotUrls = dependency.screenshotUrls
         
         self.initialState = .init(
             artworkUrl: artworkUrl,

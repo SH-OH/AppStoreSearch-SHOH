@@ -35,14 +35,14 @@ final class SearchViewReactor: Reactor, Coordinatable {
     let coordinator: CoordinatorType?
     private let useCase: SearchUseCase
     
-    init(with dependency: DependencyType? = nil) {
+    init(with dependency: DependencyType) {
+        let dependency = dependency.cast(Dependency.self)
         self.initialState = .init(
             
         )
         
-        let dependency = dependency as? Dependency
-        self.useCase = dependency?.useCase ?? .init()
-        self.coordinator = dependency?.coordinator
+        self.useCase = dependency.useCase
+        self.coordinator = dependency.coordinator
     }
 }
 

@@ -38,7 +38,6 @@ final class SearchResultViewController: UIViewController, StoryboardLoadable, Se
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.registerNib(SearchResultCell.self)
     }
 }

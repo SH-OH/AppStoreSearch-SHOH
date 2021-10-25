@@ -29,8 +29,8 @@ final class SearchRecentViewReactor: Reactor {
     private let useCase: SearchUseCase
     
     init(with dependency: DependencyType) {
-        let dependency = dependency as? Dependency
+        let dependency = dependency.cast(Dependency.self)
         self.initialState = .init()
-        self.useCase = dependency?.useCase ?? .init()
+        self.useCase = dependency.useCase
     }
 }

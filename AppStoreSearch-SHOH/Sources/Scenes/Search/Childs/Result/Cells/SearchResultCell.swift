@@ -54,14 +54,10 @@ extension SearchResultCell: StoryboardView {
     
     private func bindInput(reactor: SearchResultCellReactor) {
         openButton.rx.throttleTap()
-            .withLatestFrom(
-                reactor.state.map({ $0.trackId }))
+            .withLatestFrom(reactor.state.map({ $0.trackId }))
             .compactMap({ URL(string: "\(Domain.AppStore.url)/id\($0)") })
-            .bind(onNext: { url in
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url)
-                }
-            }).disposed(by: disposeBag)
+            .bind(onNext: { $0.openURL() })
+            .disposed(by: disposeBag)
     }
     
     private func bindOutput(reactor: SearchResultCellReactor) {
@@ -142,10 +138,10 @@ extension SearchResultCell: StoryboardView {
 
 extension SearchResultCell {
     private func changeScreenShotLayout(
-        type: SearchModel.Result.ScreenshotType,
+        type: ScreenshotType,
         count: Int
     ) {
-        func showOne(type: SearchModel.Result.ScreenshotType) {
+        func showOne(type: ScreenshotType) {
             self.screenShotImage01Trailing.priority = .defaultHigh
             self.screenShotImage02Trailing.priority = .defaultLow
             self.screenShotImage03Trailing.priority = .defaultLow

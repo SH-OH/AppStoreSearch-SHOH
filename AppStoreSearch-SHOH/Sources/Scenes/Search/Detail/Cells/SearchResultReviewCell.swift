@@ -8,12 +8,21 @@
 import UIKit
 
 final class SearchResultReviewCell: UICollectionViewCell {
-    
-    @IBOutlet private weak var gradientView: UIView!
+    struct Dependency {
+        let ratingDouble: Double
+        let userRatingCount: Int
+        let writeReviewUrl: String
+        let sellerUrl: String
+        let title: String
+        let updateDateToAgo: Date
+        let reviewContents: String
+        let rating: Double
+        let ratingArray: [Double]
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        gradientView.setGradient(.systemGray5)
     }
+    
 }

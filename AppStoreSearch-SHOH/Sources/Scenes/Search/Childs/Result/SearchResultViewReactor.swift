@@ -56,6 +56,7 @@ final class SearchResultViewReactor: Reactor, Coordinatable {
     private let useCase: SearchUseCase
     
     init(with dependency: DependencyType) {
+        let dependency = dependency.cast(Dependency.self)
         self.initialState = .init(
             searchKeyword: "",
             pageNumber: nil,
@@ -64,9 +65,8 @@ final class SearchResultViewReactor: Reactor, Coordinatable {
             displaySearchList: [],
             snapshot: .init()
         )
-        let dependency = dependency as? Dependency
-        self.useCase = dependency?.useCase ?? .init()
-        self.coordinator = dependency?.coordinator
+        self.useCase = dependency.useCase
+        self.coordinator = dependency.coordinator
     }
 }
 
@@ -193,7 +193,10 @@ extension SearchResultViewReactor {
     private func fetchSearchList(query: String) -> Observable<[SearchModel.Result]> {
         return self.useCase.fetchSearchList(query: query)
             .take(until: self.action.filter(Action.isUpdateSearchKeyword))
-            .catch({ _ in return .empty() })
+            .catch({ error -> Observable<[SearchModel.Result]> in
+                print("Failed fetchSearchList : \(error)")
+                return .empty()
+            })
     }
 }
 

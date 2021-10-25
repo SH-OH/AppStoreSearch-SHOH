@@ -9,6 +9,7 @@ import Foundation
 
 import RxSwift
 import RxCocoa
+import RxGesture
 
 extension Reactive where Base: UIImageView {
     var setImage: Binder<String?> {
@@ -17,9 +18,9 @@ extension Reactive where Base: UIImageView {
         }
     }
     
-    var ratingImage: Binder<Double> {
+    var ratingImage: Binder<Double?> {
         return Binder(base) { imageView, rating in
-            imageView.setRatingImage(CGFloat(rating))
+            imageView.setRatingImage(CGFloat(rating ?? 0))
         }
     }
 }
@@ -47,5 +48,13 @@ extension Reactive where Base: UIButton {
             .throttle(dueTime, latest: false, scheduler: MainScheduler.instance)
         
         return ControlEvent(events: source)
+    }
+}
+
+extension Reactive where Base: UIView {
+    func throttleTapGesture(_ dueTime: RxTimeInterval = .milliseconds(400)) -> Observable<UITapGestureRecognizer> {
+        return base.rx.tapGesture()
+            .when(.recognized)
+            .throttle(dueTime, latest: false, scheduler: MainScheduler.init())
     }
 }

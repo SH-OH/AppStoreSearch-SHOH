@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		092FAE522725696C007E0727 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE512725696C007E0727 /* Date+Extensions.swift */; };
+		092FAE542725AD32007E0727 /* SupportDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE532725AD32007E0727 /* SupportDevice.swift */; };
+		092FAE562725AD63007E0727 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE552725AD63007E0727 /* DeviceType.swift */; };
+		096234D02725B258008DBC62 /* ScreenshotType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096234CF2725B258008DBC62 /* ScreenshotType.swift */; };
+		096234D32725F2FD008DBC62 /* IBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096234D22725F2FD008DBC62 /* IBView.swift */; };
+		096234D5272605CB008DBC62 /* UINavigationBarAppearance+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096234D4272605CB008DBC62 /* UINavigationBarAppearance+Extensions.swift */; };
+		096234D727264A44008DBC62 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096234D627264A44008DBC62 /* URL+Extensions.swift */; };
 		0983657927220D6F00C3F7E9 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983657827220D6F00C3F7E9 /* SearchResultViewController.swift */; };
 		0983657D27220E9800C3F7E9 /* SearchResultViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983657C27220E9800C3F7E9 /* SearchResultViewReactor.swift */; };
 		0983657F27220EAC00C3F7E9 /* SearchResultViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0983657E27220EAC00C3F7E9 /* SearchResultViewController.storyboard */; };
@@ -61,9 +67,8 @@
 		09E292B7272364B200866EF5 /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292B6272364B200866EF5 /* SearchResultDetailViewController.swift */; };
 		09E292B9272364C300866EF5 /* SearchResultDetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292B8272364C300866EF5 /* SearchResultDetailViewReactor.swift */; };
 		09E292BB272364CB00866EF5 /* SearchResultDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E292BA272364CB00866EF5 /* SearchResultDetailViewController.storyboard */; };
-		09E292BD272379C700866EF5 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BC272379C700866EF5 /* UIView+Extensions.swift */; };
-		09E292C027237C5E00866EF5 /* SearchResultDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */; };
-		09E292C227237CA700866EF5 /* SearchResultDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */; };
+		09E292C027237C5E00866EF5 /* SearchResultDetailPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E292BF27237C5E00866EF5 /* SearchResultDetailPreviewCell.swift */; };
+		09E292C227237CA700866EF5 /* SearchResultDetailPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E292C127237CA700866EF5 /* SearchResultDetailPreviewCell.xib */; };
 		970061BA9593BBCEBBFE0232 /* Pods_AppStoreSearch_SHOHUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B851D02DFB04682695E6C7 /* Pods_AppStoreSearch_SHOHUITests.framework */; };
 		C99DDFBEFBF8BE27EB21E07C /* Pods_AppStoreSearch_SHOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BA3ADB9608F40FF4404324 /* Pods_AppStoreSearch_SHOH.framework */; };
 		F2E31AA7282DE5C0DEBDFDA1 /* Pods_AppStoreSearch_SHOHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC1BD59DCE466A1BF57F7B2E /* Pods_AppStoreSearch_SHOHTests.framework */; };
@@ -88,6 +93,12 @@
 
 /* Begin PBXFileReference section */
 		092FAE512725696C007E0727 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		092FAE532725AD32007E0727 /* SupportDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportDevice.swift; sourceTree = "<group>"; };
+		092FAE552725AD63007E0727 /* DeviceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceType.swift; sourceTree = "<group>"; };
+		096234CF2725B258008DBC62 /* ScreenshotType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotType.swift; sourceTree = "<group>"; };
+		096234D22725F2FD008DBC62 /* IBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBView.swift; sourceTree = "<group>"; };
+		096234D4272605CB008DBC62 /* UINavigationBarAppearance+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBarAppearance+Extensions.swift"; sourceTree = "<group>"; };
+		096234D627264A44008DBC62 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		0983657827220D6F00C3F7E9 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		0983657C27220E9800C3F7E9 /* SearchResultViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewReactor.swift; sourceTree = "<group>"; };
 		0983657E27220EAC00C3F7E9 /* SearchResultViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultViewController.storyboard; sourceTree = "<group>"; };
@@ -144,9 +155,8 @@
 		09E292B6272364B200866EF5 /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
 		09E292B8272364C300866EF5 /* SearchResultDetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewReactor.swift; sourceTree = "<group>"; };
 		09E292BA272364CB00866EF5 /* SearchResultDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResultDetailViewController.storyboard; sourceTree = "<group>"; };
-		09E292BC272379C700866EF5 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailCell.swift; sourceTree = "<group>"; };
-		09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultDetailCell.xib; sourceTree = "<group>"; };
+		09E292BF27237C5E00866EF5 /* SearchResultDetailPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailPreviewCell.swift; sourceTree = "<group>"; };
+		09E292C127237CA700866EF5 /* SearchResultDetailPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultDetailPreviewCell.xib; sourceTree = "<group>"; };
 		25936B0BBB7BB429F0D1689B /* Pods-AppStoreSearch-SHOHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		65B8A476693659F1BACF0264 /* Pods-AppStoreSearch-SHOHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreSearch-SHOHTests.release.xcconfig"; path = "Target Support Files/Pods-AppStoreSearch-SHOHTests/Pods-AppStoreSearch-SHOHTests.release.xcconfig"; sourceTree = "<group>"; };
 		97BA3ADB9608F40FF4404324 /* Pods_AppStoreSearch_SHOH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreSearch_SHOH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +197,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		096234D12725F2F0008DBC62 /* IBView */ = {
+			isa = PBXGroup;
+			children = (
+				096234D22725F2FD008DBC62 /* IBView.swift */,
+			);
+			path = IBView;
+			sourceTree = "<group>";
+		};
 		0983657727220D4500C3F7E9 /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,7 +321,8 @@
 				09E292AC2722DACB00866EF5 /* Number+Extensions.swift */,
 				09E292B027233F5400866EF5 /* ObservableType+Extensions.swift */,
 				09E292AA2722C64700866EF5 /* Reactive+Extensions.swift */,
-				09E292BC272379C700866EF5 /* UIView+Extensions.swift */,
+				096234D4272605CB008DBC62 /* UINavigationBarAppearance+Extensions.swift */,
+				096234D627264A44008DBC62 /* URL+Extensions.swift */,
 				098365822722869E00C3F7E9 /* URLRequest+Extensions.swift */,
 			);
 			path = Extensions;
@@ -376,7 +395,9 @@
 				09B560E3272172B700D45733 /* HTTPMethod.swift */,
 				09E292B3272340D500866EF5 /* Section.swift */,
 				09B560F82721C4BC00D45733 /* TabBarType.swift */,
+				096234CF2725B258008DBC62 /* ScreenshotType.swift */,
 				09B560E5272172C200D45733 /* Task.swift */,
+				092FAE552725AD63007E0727 /* DeviceType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -385,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				09B560ED2721764300D45733 /* SearchModel.swift */,
+				092FAE532725AD32007E0727 /* SupportDevice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -459,6 +481,7 @@
 		09B78DF4272457A900CFFBBD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				096234D12725F2F0008DBC62 /* IBView */,
 				09B78DF5272457C000CFFBBD /* Components */,
 			);
 			path = Common;
@@ -495,9 +518,9 @@
 		09E292BE27237C4B00866EF5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				09E292BF27237C5E00866EF5 /* SearchResultDetailCell.swift */,
+				09E292BF27237C5E00866EF5 /* SearchResultDetailPreviewCell.swift */,
 				09B78DF02724098200CFFBBD /* SearchResultReviewCell.swift */,
-				09E292C127237CA700866EF5 /* SearchResultDetailCell.xib */,
+				09E292C127237CA700866EF5 /* SearchResultDetailPreviewCell.xib */,
 				09B78DF2272409A500CFFBBD /* SearchResultReviewCell.xib */,
 			);
 			path = Cells;
@@ -624,7 +647,7 @@
 			);
 			mainGroup = 09B5608327215ADF00D45733;
 			packageReferences = (
-				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */,
+				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */,
 			);
 			productRefGroup = 09B5608D27215ADF00D45733 /* Products */;
 			projectDirPath = "";
@@ -643,7 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0983657F27220EAC00C3F7E9 /* SearchResultViewController.storyboard in Resources */,
-				09E292C227237CA700866EF5 /* SearchResultDetailCell.xib in Resources */,
+				09E292C227237CA700866EF5 /* SearchResultDetailPreviewCell.xib in Resources */,
 				09E292BB272364CB00866EF5 /* SearchResultDetailViewController.storyboard in Resources */,
 				09B5609C27215AE100D45733 /* LaunchScreen.storyboard in Resources */,
 				09B78DFA2724584000CFFBBD /* MoreAppView.xib in Resources */,
@@ -804,18 +827,20 @@
 				09B560D527216C5400D45733 /* ImageLoader.swift in Sources */,
 				09B560F92721C4BC00D45733 /* TabBarType.swift in Sources */,
 				09B78DF12724098200CFFBBD /* SearchResultReviewCell.swift in Sources */,
+				096234D727264A44008DBC62 /* URL+Extensions.swift in Sources */,
 				0983657D27220E9800C3F7E9 /* SearchResultViewReactor.swift in Sources */,
 				09B560F32721C14200D45733 /* SearchViewController.swift in Sources */,
 				0983657927220D6F00C3F7E9 /* SearchResultViewController.swift in Sources */,
 				09B560CC2721630F00D45733 /* AppCoordinator.swift in Sources */,
 				09E292B4272340D500866EF5 /* Section.swift in Sources */,
 				09E292B127233F5400866EF5 /* ObservableType+Extensions.swift in Sources */,
-				09E292BD272379C700866EF5 /* UIView+Extensions.swift in Sources */,
+				096234D02725B258008DBC62 /* ScreenshotType.swift in Sources */,
 				09E292B7272364B200866EF5 /* SearchResultDetailViewController.swift in Sources */,
 				09E292AF2723301200866EF5 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				09B561082721E30400D45733 /* SearchChildProtocol.swift in Sources */,
 				09B78DF82724582800CFFBBD /* MoreAppView.swift in Sources */,
 				09B560DE2721724F00D45733 /* Cachable.swift in Sources */,
+				096234D5272605CB008DBC62 /* UINavigationBarAppearance+Extensions.swift in Sources */,
 				09B560F72721C1FC00D45733 /* MainCoordinator.swift in Sources */,
 				09E292A92722C4FF00866EF5 /* SearchResultCellReactor.swift in Sources */,
 				09B560FB2721C5B700D45733 /* SearchCoordinator.swift in Sources */,
@@ -835,8 +860,11 @@
 				09B560D327216C4C00D45733 /* NetworkProvider.swift in Sources */,
 				098365832722869E00C3F7E9 /* URLRequest+Extensions.swift in Sources */,
 				09B560EC2721738500D45733 /* Domain.swift in Sources */,
-				09E292C027237C5E00866EF5 /* SearchResultDetailCell.swift in Sources */,
+				092FAE542725AD32007E0727 /* SupportDevice.swift in Sources */,
+				09E292C027237C5E00866EF5 /* SearchResultDetailPreviewCell.swift in Sources */,
 				09E292AB2722C64700866EF5 /* Reactive+Extensions.swift in Sources */,
+				092FAE562725AD63007E0727 /* DeviceType.swift in Sources */,
+				096234D32725F2FD008DBC62 /* IBView.swift in Sources */,
 				09B5610E2721FCC200D45733 /* SearchRecentCell.swift in Sources */,
 				09E292A72722AF3F00866EF5 /* SearchResultCell.swift in Sources */,
 			);
@@ -1200,7 +1228,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */ = {
+		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SH-OH/SPMSHOHProxy.git";
 			requirement = {
@@ -1213,7 +1241,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		09B560C027215B4D00D45733 /* SPMSHOHProxy */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy.git" */;
+			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */;
 			productName = SPMSHOHProxy;
 		};
 /* End XCSwiftPackageProductDependency section */

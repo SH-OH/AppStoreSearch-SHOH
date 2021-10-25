@@ -41,17 +41,13 @@ final class MainCoordinator: CoordinatorType {
     -> (navigationController: UINavigationController, coordinator: CoordinatorType)
     {
         let childNavigationController = UINavigationController()
-        let backgroundColor: UIColor = .white.withAlphaComponent(0.95)
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = backgroundColor
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        } else {
-            childNavigationController.navigationBar.isTranslucent = false
-            childNavigationController.navigationBar.backgroundColor = backgroundColor
-        }
+        let appearance = UINavigationBarAppearance.create(
+            configType: .opaque,
+            backgroundColor: .white.withAlphaComponent(0.95),
+            hasBottomLine: true
+        )
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
         
         childNavigationController.title = tabBarType.title
         childNavigationController.tabBarItem = tabBarType.tabBarItem

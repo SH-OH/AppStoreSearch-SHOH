@@ -21,3 +21,9 @@ enum Domain {
         }
     }
 }
+
+extension Domain {
+    static func review(id: Int) -> String {
+        return Domain.AppStore.url + "/app/itunes-u/id\(id)?ls=1&mt=8&action=write-review"
+    }
+}

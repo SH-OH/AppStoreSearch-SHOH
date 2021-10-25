@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 import SPMSHOHProxy
 
 struct SearchModel: Codable {
@@ -22,7 +23,6 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var artworkUrl60: String
         @DefaultWrapper private(set) var artworkUrl100: String
         @DefaultWrapper private(set) var artworkUrl512: String
-        @DefaultWrapper private(set) var artistViewUrl: String
         @DefaultWrapper private(set) var kind: String
         @DefaultWrapper private(set) var features: [String]
         @DefaultWrapper private(set) var sellerName: String
@@ -34,7 +34,6 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var isVppDeviceBasedLicensingEnabled: Bool
         @DefaultWrapper private(set) var primaryGenreName: String
         @DefaultWrapper private(set) var currentVersionReleaseDate: String
-        @DefaultWrapper private(set) var releaseNotes: String
         @DefaultWrapper private(set) var minimumOsVersion: String
         @DefaultWrapper private(set) var currency: String
         @DefaultWrapper private(set) var averageUserRating: Double
@@ -50,14 +49,15 @@ struct SearchModel: Codable {
         @DefaultWrapper private(set) var description: String
         @DefaultWrapper private(set) var bundleId: String
         @DefaultWrapper private(set) var userRatingCount: Int
+        @DefaultWrapper private(set) var averageUserRatingForCurrentVersion: Double
+        @DefaultWrapper private(set) var trackContentRating: String
+        @DefaultWrapper private(set) var contentAdvisoryRating: String
         
-        @DefaultWrapper private var averageUserRatingForCurrentVersion: Double
-        @DefaultWrapper private var trackContentRating: String
-        @DefaultWrapper private var contentAdvisoryRating: String
         
-        
+        private(set) var artistViewUrl: String?
+        private(set) var releaseNotes: String?
         private(set) var formattedPrice: String?
-        private var fileSizeBytes: String?
+        private(set) var fileSizeBytes: String?
         private(set) var sellerUrl: String?
         private(set) var price: Double?
     }
@@ -66,20 +66,6 @@ struct SearchModel: Codable {
 // MARK: - Computed Properties
 
 extension SearchModel.Result {
-    enum ScreenshotType {
-        case high
-        case wide
-        
-        var multiplier: Double {
-            switch self {
-            case .high:
-                return 392.0/696.0
-            case .wide:
-                return 406.0/228.0
-            }
-        }
-    }
-    
     var screenshotType: ScreenshotType {
         guard let slice = self.screenshotUrls.first?.components(separatedBy: "/").last?.dropLast(6) else {
             return .high
@@ -129,52 +115,14 @@ extension SearchModel.Result {
         }
         return ratingArray
     }
-    
-    var genreName: String {
-        return genres.first ?? ""
-    }
-    
-    var contentRating: String {
-        if !self.trackContentRating.isEmpty {
-            return self.trackContentRating
-        }
-        return self.contentAdvisoryRating
-    }
-    
-    var updateDateToAgo: String {
-        let toDate = Self.ISOFormatter.date(from: self.currentVersionReleaseDate) ?? Date()
-        return toDate.ago
-    }
-    
-    var fileSizeToFormatting: String {
-        let fileSizeBytes = self.fileSizeBytes ?? ""
-        let sizeToInt = Int64(fileSizeBytes) ?? 0
-        
-        let lazyString = Self.byteFormatter.string(fromByteCount: sizeToInt)
-            .lazy
-            .filter({ !($0 == " ") })
-        
-        return String(lazyString)
-    }
 }
 
 extension SearchModel.Result {
     private static var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 1
+        numberFormatter.maximumFractionDigits = 1
         return numberFormatter
-    }
-    
-    private static var byteFormatter: ByteCountFormatter {
-        let byteFormatter = ByteCountFormatter()
-        byteFormatter.allowedUnits = .useAll
-        byteFormatter.includesUnit = true
-        return byteFormatter
-    }
-    
-    private static var ISOFormatter: ISO8601DateFormatter {
-        return ISO8601DateFormatter()
     }
 }
