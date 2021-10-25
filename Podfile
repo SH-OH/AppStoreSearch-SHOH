@@ -7,14 +7,19 @@ def default_pods
   pod 'ReactorKit'
   pod 'SnapKit'
   pod 'Then'
+  pod 'DeviceKit'
 
   rx_pods
 end
 
 def rx_pods
-  pod 'RxSwift', '~> 6.1.0'
-  pod 'RxCocoa', '~> 6.1.0'
-  pod 'RxDataSources', '~> 5.0'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxGesture'
+end
+
+def ui_pods
+  pod 'ActiveLabel'
 end
 
 def test_pods
@@ -23,6 +28,7 @@ end
 
 target 'AppStoreSearch-SHOH' do
     default_pods
+    ui_pods
 end
 
 target 'AppStoreSearch-SHOHTests' do
