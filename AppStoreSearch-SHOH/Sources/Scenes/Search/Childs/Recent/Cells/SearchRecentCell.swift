@@ -9,11 +9,9 @@ import UIKit
 
 final class SearchRecentCell: UICollectionViewCell {
     
-    @IBOutlet private weak var recentImageView: UIImageView!
     @IBOutlet private weak var recentLabel: UILabel!
     
-    func configure(image: String, text: String) {
-        recentImageView.setImage(with: image)
+    func configure(text: String) {
         recentLabel.text = text
     }
 }

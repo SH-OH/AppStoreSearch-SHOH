@@ -11,29 +11,38 @@ import SPMSHOHProxy
 
 final class SearchCoordinator: CoordinatorType {
     private unowned var navigationController: UINavigationController
+    
+    private let useCase: SearchUseCase
+    private var children: [SearchChildProtocol]
     private var currentChild: SearchChildProtocol?
-        
+    
+    
     enum Navigation: NavigationType {
         case changeTochild
         case detail
     }
 
     
-    init(_ navigationController: UINavigationController) {
+    init(
+        _ navigationController: UINavigationController,
+        useCase: SearchUseCase
+    ) {
         self.navigationController = navigationController
+        self.useCase = useCase
+        self.children = []
     }
     
     func start(with dependency: DependencyType = EmptyDependency()) {
-        let dependency = SearchViewReactor.Dependency(
-            useCase: SearchUseCase(),
-            coordinator: self
-        )
+        let dependency = SearchViewReactor.Dependency(coordinator: self)
         let viewController = SearchViewController.storyboard()
         viewController.title = navigationController.title
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationItem.largeTitleDisplayMode = .automatic
         
-        viewController.reactor = SearchViewReactor(with: dependency)
+        viewController.reactor = SearchViewReactor(
+            with: dependency,
+            useCase: self.useCase
+        )
         navigationController.setViewControllers([viewController], animated: false)
     }
     
@@ -48,6 +57,10 @@ final class SearchCoordinator: CoordinatorType {
         case .detail:
             self.navigateToDetail(with: dependency)
         }
+    }
+    
+    func setupChildren(_ children: SearchChildProtocol...) {
+        self.children = children
     }
 }
 
@@ -83,13 +96,29 @@ extension SearchCoordinator {
         
         switch dependecy {
         case let dependecy as SearchRecentViewReactor.Dependency:
-            let _viewController = dependecy.child.viewController(SearchRecentViewController.self)
-            _viewController.reactor = SearchRecentViewReactor(with: dependecy)
+            guard let child = self.children.first(where: { $0.childType == .recent }) else {
+                print("Not found recent child in children - \(children)")
+                return
+            }
+            let _viewController = child.viewController(SearchRecentViewController.self)
+            _viewController.reactor = SearchRecentViewReactor(
+                with: dependecy,
+                useCase: self.useCase,
+                coordinator: self
+            )
             viewController = _viewController
             
         case let dependecy as SearchResultViewReactor.Dependency:
-            let _viewController = dependecy.child.viewController(SearchResultViewController.self)
-            _viewController.reactor = SearchResultViewReactor(with: dependecy)
+            guard let child = self.children.first(where: { $0.childType == .result }) else {
+                print("Not found result child in children - \(children)")
+                return
+            }
+            let _viewController = child.viewController(SearchResultViewController.self)
+            _viewController.reactor = SearchResultViewReactor(
+                with: dependecy,
+                useCase: self.useCase,
+                coordinator: self
+            )
             viewController = _viewController
             
         default:

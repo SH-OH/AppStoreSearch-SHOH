@@ -58,3 +58,17 @@ extension Reactive where Base: UIView {
             .throttle(dueTime, latest: false, scheduler: MainScheduler.init())
     }
 }
+
+extension Reactive where Base: UISearchBar {
+    var textDidChange: ControlProperty<String?> {
+        let source = base.rx.delegate
+            .methodInvoked(#selector(UISearchBarDelegate.searchBar(_:textDidChange:)))
+            .map({ $0[safe: 1] as? String })
+        
+        let bindingObserver = Binder(base) { searchBar, text in
+            searchBar.text = text
+        }
+        
+        return ControlProperty(values: source, valueSink: bindingObserver)
+    }
+}

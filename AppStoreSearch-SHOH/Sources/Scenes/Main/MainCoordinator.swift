@@ -41,14 +41,6 @@ final class MainCoordinator: CoordinatorType {
     -> (navigationController: UINavigationController, coordinator: CoordinatorType)
     {
         let childNavigationController = UINavigationController()
-        let appearance = UINavigationBarAppearance.create(
-            configType: .opaque,
-            backgroundColor: .white.withAlphaComponent(0.95),
-            hasBottomLine: true
-        )
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        
         childNavigationController.title = tabBarType.title
         childNavigationController.tabBarItem = tabBarType.tabBarItem
         let childCoordinator = tabBarType.createCoordinator(childNavigationController)

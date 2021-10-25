@@ -12,4 +12,8 @@ extension ObservableType {
     func asDriverOnNever() -> Driver<Element> {
         return asDriver(onErrorDriveWith: .never())
     }
+    
+    func mapToVoid() -> Observable<Void> {
+        return self.map({ _ in () })
+    }
 }

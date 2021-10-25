@@ -13,6 +13,10 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+protocol SearchControlDelegate: AnyObject {
+    func active(_ isActive: Bool, keyword: String?)
+}
+
 final class SearchViewController: UIViewController, StoryboardLoadable {
     
     private enum Const {
@@ -33,6 +37,7 @@ final class SearchViewController: UIViewController, StoryboardLoadable {
         let viewController = SearchRecentViewController.storyboard()
         return viewController
     }()
+    
     private let resultViewController: SearchResultViewController = {
         let viewController = SearchResultViewController.storyboard()
         viewController.view.isHidden = true
@@ -41,15 +46,16 @@ final class SearchViewController: UIViewController, StoryboardLoadable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
-        setupChildren()
+        configureNavigationBar()
+        configureDelegate()
+        configureChildren()
     }
     
-    private func setupNavigationBar() {
+    private func configureNavigationBar() {
         self.navigationItem.searchController = searchController
     }
     
-    private func setupChildren() {
+    private func configureChildren() {
         addChild(recentViewController)
         addChild(resultViewController)
         view.addSubview(recentViewController.view)
@@ -62,6 +68,11 @@ final class SearchViewController: UIViewController, StoryboardLoadable {
         }
         recentViewController.didMove(toParent: self)
         resultViewController.didMove(toParent: self)
+        (reactor?.coordinator as? SearchCoordinator)?.setupChildren(recentViewController, resultViewController)
+    }
+    
+    private func configureDelegate() {
+        recentViewController.delegate = self
     }
 }
 
@@ -73,33 +84,56 @@ extension SearchViewController: StoryboardView {
     
     private func bindInput(reactor: SearchViewReactor) {
         let searchBar = searchController.searchBar
-        let sharedSearchClicked = searchBar.rx.searchButtonClicked
+        
+        let sharedText = searchBar.rx.textDidChange
+            .compactMap({ $0 })
             .share()
         
-        let sharedText = searchBar.rx.text.orEmpty
-            .distinctUntilChanged()
-            .share()
-        
-        sharedSearchClicked
+        let resultWithDependency = searchBar.rx.searchButtonClicked
             .withLatestFrom(sharedText)
-            .bind(to: resultViewController.searchClickedEvent)
-            .disposed(by: disposeBag)
-        
-        Observable<SearchChildProtocol>.merge(
-            sharedSearchClicked
-                .compactMap({ [weak resultViewController] in resultViewController }),
-            searchBar.rx.cancelButtonClicked
-                .compactMap({ [weak recentViewController] in recentViewController }),
-            sharedText
-                .compactMap({ [weak recentViewController] _ in recentViewController })
+            .compactMap({ searchKeyword -> DependencyType? in
+                return SearchResultViewReactor.Dependency(searchKeyword: searchKeyword)
+            })
+            
+        let defaultRecentWithDependency = Observable.merge(
+            rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).mapToVoid().take(1),
+            searchBar.rx.cancelButtonClicked.asObservable()
         )
-            .distinctUntilChanged(at: \.childType)
+            .withLatestFrom(reactor.state.map({ $0.recentList }))
+            .compactMap({ recentList -> DependencyType? in
+                return SearchRecentViewReactor.Dependency(recentList: recentList)
+            })
+        
+        let searchingRecentWithDependency = sharedText
+            .withLatestFrom(
+                reactor.state.map({ $0.recentList }),
+                resultSelector: { ($0, $1) }
+            )
+            .compactMap({ keyword, recentList -> DependencyType? in
+                let filteredList = recentList.lazy.filter({ $0.contains(keyword) })
+                return SearchRecentViewReactor.Dependency(recentList: Array(filteredList))
+            })
+            
+        Observable<DependencyType>.merge(
+            defaultRecentWithDependency,
+            searchingRecentWithDependency,
+            resultWithDependency
+        )
             .map(Reactor.Action.willChangeChild)
-            .bind(to: reactor.action)
+            .asDriverOnNever()
+            .drive(reactor.action)
             .disposed(by: disposeBag)
     }
     
     private func bindOutput(reactor: SearchViewReactor) {
         
+    }
+}
+
+extension SearchViewController: SearchControlDelegate {
+    func active(_ isActive: Bool, keyword: String?) {
+        self.searchController.searchBar.rx.text.onNext(keyword)
+        self.searchController.isActive = isActive
+        self.searchController.searchBar.endEditing(true)
     }
 }

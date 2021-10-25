@@ -10,7 +10,6 @@ import ReactorKit
 
 final class SearchViewReactor: Reactor, Coordinatable {
     struct Dependency: DependencyType {
-        let useCase: SearchUseCase
         let coordinator: CoordinatorType
     }
     
@@ -20,54 +19,45 @@ final class SearchViewReactor: Reactor, Coordinatable {
     }
     
     enum Action {
-        case willChangeChild(SearchChildProtocol)
+        case willChangeChild(DependencyType)
     }
     
     enum Mutation {
-        
+        case setRecentList([String])
     }
     
     struct State {
-        
+        var recentList: [String]
     }
     
     let initialState: State
     let coordinator: CoordinatorType?
     private let useCase: SearchUseCase
     
-    init(with dependency: DependencyType) {
+    init(with dependency: DependencyType, useCase: SearchUseCase) {
         let dependency = dependency.cast(Dependency.self)
         self.initialState = .init(
-            
+            recentList: UserDefaultsStorage.recentSearchKeywords
         )
         
-        self.useCase = dependency.useCase
+        self.useCase = useCase
         self.coordinator = dependency.coordinator
+    }
+    
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let setObservedRecentList = UserDefaults.standard.rx.observe([String].self, UserDefaultsStorage.Key.RecentSearchKeywords.rawValue)
+            .compactMap({ $0 })
+            .map(Mutation.setRecentList)
+        
+        return Observable.merge(mutation, setObservedRecentList)
     }
 }
 
 extension SearchViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case let .willChangeChild(child):
-            guard let coordinator = self.coordinator else { return .empty() }
-            switch child.childType {
-            case .recent:
-                let dependency = SearchRecentViewReactor.Dependency(
-                    useCase: self.useCase,
-                    child: child
-                )
-                coordinator.navigate(to: SearchCoordinator.Navigation.changeTochild, with: dependency)
-                
-            case .result:
-                let dependency = SearchResultViewReactor.Dependency(
-                    useCase: self.useCase,
-                    coordinator: coordinator,
-                    child: child
-                )
-                coordinator.navigate(to: SearchCoordinator.Navigation.changeTochild, with: dependency)
-            }
-            
+        case let .willChangeChild(dependency):
+            coordinator?.navigate(to: SearchCoordinator.Navigation.changeTochild, with: dependency)
             return .empty()
         }
     }
@@ -77,7 +67,8 @@ extension SearchViewReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        
+        case let .setRecentList(newValue):
+            newState.recentList = newValue
         }
         return newState
     }

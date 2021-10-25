@@ -21,9 +21,7 @@ final class SearchResultViewController: UIViewController, StoryboardLoadable, Se
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var disposeBag: DisposeBag = .init()
-    var childType: SearchViewReactor.ChildType = .result
-    
-    let searchClickedEvent: BehaviorRelay<String> = .init(value: "")
+    let childType: SearchViewReactor.ChildType = .result
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Section.Item> = {
         return UICollectionViewDiffableDataSource<Section, Section.Item>(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
@@ -68,14 +66,23 @@ extension SearchResultViewController: StoryboardView {
             .map(Reactor.Action.didSelectItem)
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        
-        searchClickedEvent
-            .map(Reactor.Action.updateSearchKeyword)
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
     }
     
     private func bindOut(reactor: SearchResultViewReactor) {
+        let sharedSearchKeyword = reactor.state.map({ $0.searchKeyword })
+            .take(1)
+            .share()
+        
+        sharedSearchKeyword
+            .map(Reactor.Action.updateSearchKeyword)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        sharedSearchKeyword
+            .map(Reactor.Action.fetchSearchList)
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         reactor.state.compactMap({ $0.pageNumber })
             .distinctUntilChanged()
             .withLatestFrom(

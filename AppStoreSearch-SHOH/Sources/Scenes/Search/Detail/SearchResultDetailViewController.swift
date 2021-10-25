@@ -19,6 +19,8 @@ final class SearchResultDetailViewController: UIViewController, StoryboardLoadab
         static let downImage: String = "chevron.down"
         static let privacyUrlText: String = "개발자의 개인정보 처리방침"
         static let privacyText: String = "개발자가 아래 설명된 데이터 처리 방식이 앱의 개인정보 처리방침에 포함되어 있을 수 있다고 표시했습니다. 자세한 내용은 \(Const.privacyUrlText)을 참조하십시오."
+        static let reviewCellHeight: CGFloat = 150
+        static let previewCellMultiplier: CGFloat = 0.6
     }
     
     // MARK: - Constraints
@@ -409,7 +411,7 @@ extension SearchResultDetailViewController: StoryboardView {
             .disposed(by: disposeBag)
         
         reactor.state.map({ $0.screenshotType })
-            .compactMap({ [weak self] in self?.calculateCellSize($0) })
+            .compactMap({ [weak self] in self?.calculatePreviewCellSize($0) })
             .bind(to: previewCellSize)
             .disposed(by: disposeBag)
         
@@ -461,27 +463,16 @@ extension SearchResultDetailViewController {
         newView.alpha = 1
     }
     
-    private func calculateCellSize(_ type: ScreenshotType) -> CGSize {
-        switch type {
-        case .high:
-            let width: CGFloat = view?.bounds.width ?? 0
-            let imageW: CGFloat = 392
-            let imageH: CGFloat = 696
-            let resultW = width * 0.6
-            let multiplier = resultW / imageW
-            let resultH = imageH * multiplier
-            return CGSize(width: resultW, height: resultH)
-            
-        case .wide:
-            let resultW = (previewCollectionView?.bounds.width ?? 0) - 30
-            let imageW: CGFloat = 406
-            let imageH: CGFloat = 228
-            
-            let multiplier = resultW / imageW
-            let resultH = imageH * multiplier
-            
-            return CGSize(width: resultW, height: resultH)
-        }
+    private func calculatePreviewCellSize(_ type: ScreenshotType) -> CGSize {
+        let width: CGFloat = view?.bounds.width ?? 0
+        let resultW = type == .high
+        ? width * Const.previewCellMultiplier
+        : width - 30
+        
+        let multiplier = resultW / type.imageWH.width
+        let resultH = type.imageWH.height * multiplier
+        
+        return CGSize(width: resultW, height: resultH)
     }
     
     private func animateShowInfoSubView(button: UIButton?, completion: @escaping () -> Void) {
@@ -504,7 +495,7 @@ extension SearchResultDetailViewController: UICollectionViewDelegateFlowLayout {
             return previewCellSize.value
             
         case reviewCollectionView:
-            return CGSize(width: collectionView.bounds.width-30, height: 150)
+            return CGSize(width: collectionView.bounds.width-30, height: Const.reviewCellHeight)
             
         default:
             return .zero

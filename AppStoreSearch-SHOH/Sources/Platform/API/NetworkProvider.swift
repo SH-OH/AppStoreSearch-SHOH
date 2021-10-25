@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 import RxSwift
 
 final class NetworkProvider<Target: TargetType> {
@@ -34,12 +35,14 @@ final class NetworkProvider<Target: TargetType> {
     func request<D: Decodable>(
         _ modelType: D.Type,
         target: Target,
-        callbackQueue: DispatchQueue = .main
+        callbackScheduler: ImmediateSchedulerType = MainScheduler.asyncInstance
     ) -> Single<D> {
         return Single<D>.create { [weak self] observer in
             let disposable = Disposables.create()
             guard let self = self else { return disposable }
             let url = self.configURL(by: target)
+            
+            ActivityIndicator.shared.show()
             
             var request = URLRequest(url: url)
             request.httpMethod = target.method.rawValue
@@ -75,7 +78,10 @@ final class NetworkProvider<Target: TargetType> {
             }
         }
         .subscribe(on: ConcurrentDispatchQueueScheduler(queue: self.defaultQueue))
-        .observe(on: ConcurrentDispatchQueueScheduler(queue: callbackQueue))
+        .observe(on: callbackScheduler)
+        .do(onDispose: {
+            ActivityIndicator.shared.hide()
+        })
     }
 }
 

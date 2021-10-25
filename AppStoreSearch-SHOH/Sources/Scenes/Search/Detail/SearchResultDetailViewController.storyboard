@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="f72-l1-qha" userLabel="Contents VStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2905.3333333333335"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2805.3333333333335"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnb-Tv-hNl" userLabel="메인">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
@@ -59,10 +59,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXI-Th-wxx" customClass="IBButton" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
-                                                        <rect key="frame" x="125" y="85" width="60" height="25"/>
+                                                        <rect key="frame" x="125" y="80" width="60" height="30"/>
                                                         <color key="backgroundColor" systemColor="linkColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="1yO-fh-msi"/>
+                                                            <constraint firstAttribute="height" constant="30" id="1yO-fh-msi"/>
                                                             <constraint firstAttribute="width" constant="60" id="8lN-Jg-Ysn"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
@@ -76,7 +76,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sj-bR-FQJ">
-                                                        <rect key="frame" x="375" y="86.333333333333343" width="19" height="22.333333333333329"/>
+                                                        <rect key="frame" x="380" y="80" width="19" height="30"/>
                                                         <state key="normal" image="square.and.arrow.up" catalog="system"/>
                                                     </button>
                                                 </subviews>
@@ -84,12 +84,13 @@
                                                 <constraints>
                                                     <constraint firstItem="fXI-Th-wxx" firstAttribute="bottom" secondItem="7DY-AB-fbu" secondAttribute="bottom" id="7fM-ZA-1IO"/>
                                                     <constraint firstItem="7DY-AB-fbu" firstAttribute="leading" secondItem="gnb-Tv-hNl" secondAttribute="leading" constant="15" id="8lq-eT-cAE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4sj-bR-FQJ" secondAttribute="trailing" constant="15" id="EDg-5a-I2a"/>
                                                     <constraint firstItem="QLY-Yu-7SO" firstAttribute="top" secondItem="odS-lT-Lqw" secondAttribute="bottom" constant="5" id="Ea2-5A-GaN"/>
                                                     <constraint firstItem="7DY-AB-fbu" firstAttribute="top" secondItem="gnb-Tv-hNl" secondAttribute="top" constant="10" id="HEv-wj-jy9"/>
                                                     <constraint firstItem="4sj-bR-FQJ" firstAttribute="centerY" secondItem="fXI-Th-wxx" secondAttribute="centerY" id="Kpw-EX-vs9"/>
                                                     <constraint firstItem="QLY-Yu-7SO" firstAttribute="leading" secondItem="fXI-Th-wxx" secondAttribute="leading" id="LPf-k0-hYf"/>
-                                                    <constraint firstAttribute="trailing" secondItem="4sj-bR-FQJ" secondAttribute="trailing" constant="20" id="MkE-CN-bSl"/>
                                                     <constraint firstItem="odS-lT-Lqw" firstAttribute="leading" secondItem="7DY-AB-fbu" secondAttribute="trailing" constant="10" id="b0y-3t-JuX"/>
+                                                    <constraint firstItem="4sj-bR-FQJ" firstAttribute="height" secondItem="fXI-Th-wxx" secondAttribute="height" id="d96-uv-Rgf"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="odS-lT-Lqw" secondAttribute="trailing" constant="20" id="lqX-vy-77s"/>
                                                     <constraint firstItem="QLY-Yu-7SO" firstAttribute="leading" secondItem="odS-lT-Lqw" secondAttribute="leading" id="ph7-oG-E0a"/>
                                                     <constraint firstAttribute="bottom" secondItem="7DY-AB-fbu" secondAttribute="bottom" constant="15" id="plA-7z-XO6"/>
@@ -515,7 +516,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efs-I6-03m">
                                                         <rect key="frame" x="339" y="211" width="60" height="17"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-Pf-T4o" userLabel="GradientView" customClass="IBView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-Pf-T4o" userLabel="GradientView" customClass="IBView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="17"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -538,7 +539,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="aCA-Pf-T4o" firstAttribute="centerY" secondItem="2kh-HQ-TRa" secondAttribute="centerY" id="21u-oU-348"/>
                                                             <constraint firstAttribute="trailing" secondItem="2kh-HQ-TRa" secondAttribute="trailing" id="M9z-um-PJM"/>
@@ -683,7 +684,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rG6-Wv-Njo">
                                                         <rect key="frame" x="339" y="43.333333333333258" width="60" height="17"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-WO-khz" userLabel="GradientView" customClass="IBView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-WO-khz" userLabel="GradientView" customClass="IBView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="17"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -706,7 +707,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="HIn-P5-oGA"/>
                                                             <constraint firstAttribute="bottom" secondItem="g0q-Sa-j8W" secondAttribute="bottom" id="ZvN-Fg-kbw"/>
@@ -1106,13 +1107,13 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 개인 정보 보호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9l-mO-hdf">
-                                                        <rect key="frame" x="15.000000000000007" y="11" width="121.66666666666669" height="40.333333333333336"/>
+                                                        <rect key="frame" x="15.000000000000007" y="11.000000000000002" width="121.66666666666669" height="23.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHY-uE-t2r">
-                                                        <rect key="frame" x="298.33333333333331" y="18.666666666666515" width="100.66666666666669" height="25"/>
+                                                        <rect key="frame" x="298.33333333333331" y="10.333333333333258" width="100.66666666666669" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="mt3-Vw-Xei"/>
                                                         </constraints>
@@ -1121,8 +1122,8 @@
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                                         </buttonConfiguration>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-mC-NTa" customClass="ActiveLabel" customModule="ActiveLabel">
-                                                        <rect key="frame" x="15" y="66.333333333333258" width="384" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발자가 아래 설명된 데이터 처리 방식이 앱의 개인정보 처리방침에 포함되어 있을 수 있다고 표시했습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-mC-NTa" customClass="ActiveLabel" customModule="ActiveLabel">
+                                                        <rect key="frame" x="15" y="49.666666666666515" width="384" height="33.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1934,13 +1935,6 @@
                                                     <constraint firstItem="Std-fa-TSv" firstAttribute="top" secondItem="uca-5z-Re9" secondAttribute="bottom" constant="15" id="yin-ar-hW0"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ua-la-q9c" userLabel="다른 앱" customClass="MoreAppView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="2805.3333333333335" width="414" height="100"/>
-                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="Ckc-5h-uOT"/>
-                                                </constraints>
-                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -2034,9 +2028,6 @@
         <designable name="hTS-wB-HQf">
             <size key="intrinsicContentSize" width="534" height="17"/>
         </designable>
-        <designable name="hVY-mC-NTa">
-            <size key="intrinsicContentSize" width="36" height="17"/>
-        </designable>
     </designables>
     <resources>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
@@ -2078,9 +2069,6 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

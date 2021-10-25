@@ -29,7 +29,7 @@ enum TabBarType: Int {
     func createCoordinator(_ navigationController: UINavigationController) -> CoordinatorType {
         switch self {
         case .search:
-            return SearchCoordinator(navigationController)
+            return SearchCoordinator(navigationController, useCase: SearchUseCase())
         }
     }
 }

@@ -20,12 +20,27 @@ final class AppCoordinator: CoordinatorType {
         }
         let rootNavigationController = UINavigationController()
         rootNavigationController.setNavigationBarHidden(true, animated: false)
+        
         dependency.window?.rootViewController = rootNavigationController
         dependency.window?.makeKeyAndVisible()
+        
+        configureNavigationBar()
         
         let mainCoordinator = MainCoordinator(rootNavigationController)
         mainCoordinator.start()
     }
     
     func navigate(to navigation: NavigationType, with dependency: DependencyType) {}
+}
+
+extension AppCoordinator {
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance.create(
+            configType: .opaque,
+            backgroundColor: .white.withAlphaComponent(0.95),
+            hasBottomLine: true
+        )
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
 }

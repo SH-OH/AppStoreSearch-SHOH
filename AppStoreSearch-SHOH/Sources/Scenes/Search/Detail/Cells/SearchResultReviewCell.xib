@@ -79,7 +79,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2Y-C0-Gnr" userLabel="GradientView" customClass="IBView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A2Y-C0-Gnr" userLabel="GradientView" customClass="IBView" customModule="AppStoreSearch_SHOH" customModuleProvider="target">
                                 <rect key="frame" x="315" y="120" width="15" height="12"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

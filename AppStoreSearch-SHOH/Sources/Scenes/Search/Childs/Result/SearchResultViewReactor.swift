@@ -14,9 +14,7 @@ typealias SearchResultSnapshotType = NSDiffableDataSourceSnapshot<Section, Secti
 
 final class SearchResultViewReactor: Reactor, Coordinatable {
     struct Dependency: DependencyType {
-        let useCase: SearchUseCase
-        let coordinator: CoordinatorType
-        let child: SearchChildProtocol
+        let searchKeyword: String
     }
     
     private enum Const {
@@ -26,6 +24,7 @@ final class SearchResultViewReactor: Reactor, Coordinatable {
     
     enum Action {
         case updateSearchKeyword(String)
+        case fetchSearchList(String)
         case updateDisplaySearchList((Int, [SearchModel.Result]))
         case updateSnapshot([SearchModel.Result])
         case loadMore(Int)
@@ -33,7 +32,6 @@ final class SearchResultViewReactor: Reactor, Coordinatable {
     }
     
     enum Mutation {
-        case setSearchKeyword(String)
         case setPageNumber(Int)
         case setIsEnableLoadMore(Bool)
         case setSearchList([SearchModel.Result])
@@ -55,18 +53,22 @@ final class SearchResultViewReactor: Reactor, Coordinatable {
     let coordinator: CoordinatorType?
     private let useCase: SearchUseCase
     
-    init(with dependency: DependencyType) {
+    init(
+        with dependency: DependencyType,
+        useCase: SearchUseCase,
+        coordinator: CoordinatorType
+    ) {
         let dependency = dependency.cast(Dependency.self)
         self.initialState = .init(
-            searchKeyword: "",
+            searchKeyword: dependency.searchKeyword,
             pageNumber: nil,
             isEnableLoadMore: false,
             searchList: [],
             displaySearchList: [],
             snapshot: .init()
         )
-        self.useCase = dependency.useCase
-        self.coordinator = dependency.coordinator
+        self.useCase = useCase
+        self.coordinator = coordinator
     }
 }
 
@@ -90,6 +92,11 @@ extension SearchResultViewReactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .updateSearchKeyword(keyword):
+            UserDefaultsStorage.updateRecentSearchKeywords(keyword)
+            
+            return .empty()
+            
+        case let .fetchSearchList(keyword):
             let setPageNumber = Observable.just(Mutation.setPageNumber(Const.defaultPageNumber))
             
             let fetchList = self.fetchSearchList(query: keyword)
@@ -164,9 +171,6 @@ extension SearchResultViewReactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
-        case let .setSearchKeyword(newValue):
-            newState.searchKeyword = newValue
-            
         case let .setPageNumber(newValue):
             newState.pageNumber = newValue
             
