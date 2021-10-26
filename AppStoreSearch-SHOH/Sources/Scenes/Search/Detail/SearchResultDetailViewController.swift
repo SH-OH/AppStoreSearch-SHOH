@@ -15,12 +15,25 @@ import SnapKit
 
 final class SearchResultDetailViewController: UIViewController, StoryboardLoadable {
     
+    private enum ScrollTag: Int {
+        case main = 100
+        case summary
+        case newFeature
+        case preview
+        case description
+        case rating
+        case review
+        case privacy
+        case info
+    }
+    
     private enum Const {
         static let downImage: String = "chevron.down"
         static let privacyUrlText: String = "개발자의 개인정보 처리방침"
         static let privacyText: String = "개발자가 아래 설명된 데이터 처리 방식이 앱의 개인정보 처리방침에 포함되어 있을 수 있다고 표시했습니다. 자세한 내용은 \(Const.privacyUrlText)을 참조하십시오."
         static let reviewCellHeight: CGFloat = 150
         static let previewCellMultiplier: CGFloat = 0.6
+        static let animationDuration: CGFloat = 0.25
     }
     
     // MARK: - Constraints
@@ -183,16 +196,39 @@ extension SearchResultDetailViewController: StoryboardView {
             }).disposed(by: disposeBag)
         
         summaryReviewView.rx.throttleTapGesture()
-            .compactMap({ [weak reviewAllButton] _ in reviewAllButton })
-            .bind(onNext: { [weak rootScrollView] button in
-                let offsetY = button.superview?.frame.minY ?? 0
+            .compactMap({ [weak self] _ in
+                self?.findOffsetY(
+                    self?.reviewAllButton,
+                    scrollTag: .rating,
+                    rootScrollView: self?.rootScrollView
+                )
+            })
+            .bind(onNext: { [weak rootScrollView] offsetY in
                 rootScrollView?.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
             }).disposed(by: disposeBag)
         
         summaryContentRatingView.rx.throttleTapGesture()
-            .compactMap({ [weak infoContentRatingLabel] _ in infoContentRatingLabel })
-            .bind(onNext: { label in
-                print("후...요약 연령 이벤트...")
+            .compactMap({ [weak self] _ in
+                self?.findOffsetY(
+                    self?.infoContentRatingSubView,
+                    scrollTag: .info,
+                    rootScrollView: self?.rootScrollView
+                )
+            })
+            .bind(onNext: { [weak rootScrollView] offsetY in
+                rootScrollView?.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
+            }).disposed(by: disposeBag)
+        
+        summaryLanguageView.rx.throttleTapGesture()
+            .compactMap({ [weak self] _ in
+                self?.findOffsetY(
+                    self?.infoLanguageSubView,
+                    scrollTag: .info,
+                    rootScrollView: self?.rootScrollView
+                )
+            })
+            .bind(onNext: { [weak rootScrollView] offsetY in
+                rootScrollView?.setContentOffset(CGPoint(x: 0, y: offsetY), animated: true)
             }).disposed(by: disposeBag)
         
         versionHistoryButton.rx.throttleTap()
@@ -201,21 +237,25 @@ extension SearchResultDetailViewController: StoryboardView {
             }).disposed(by: disposeBag)
         
         releaseNotesTextView.rx.throttleTapGesture()
-            .take(1)
-            .bind(onNext: { [weak releaseNotesTextViewHeight, weak releaseNotesMoreView] _ in
-                releaseNotesTextViewHeight?.isActive = false
-                releaseNotesMoreView?.superview?.layoutIfNeeded()
-                UIView.animate(withDuration: 0.3) {
+            .bind(onNext: { [weak releaseNotesTextView, weak releaseNotesTextViewHeight, weak releaseNotesMoreView] _ in
+                let adjustHeight = releaseNotesTextView?.intrinsicContentSize.height ?? 0
+                if adjustHeight > releaseNotesTextView?.bounds.height ?? 0 {
+                    releaseNotesTextViewHeight?.constant = adjustHeight
+                    releaseNotesTextView?.superview?.layoutIfNeeded()
+                }
+                UIView.animate(withDuration: Const.animationDuration) {
                     releaseNotesMoreView?.alpha = 0
                 }
             }).disposed(by: disposeBag)
         
         descriptionTextView.rx.throttleTapGesture()
-            .take(1)
-            .bind(onNext: { [weak descriptionTextViewHeight, weak descriptionMoreView] _ in
-                descriptionTextViewHeight?.isActive = false
-                descriptionMoreView?.superview?.layoutIfNeeded()
-                UIView.animate(withDuration: 0.3) {
+            .bind(onNext: { [weak descriptionTextView, weak descriptionTextViewHeight, weak descriptionMoreView] _ in
+                let adjustHeight = descriptionTextView?.intrinsicContentSize.height ?? 0
+                if adjustHeight > descriptionTextView?.bounds.height ?? 0 {
+                    descriptionTextViewHeight?.constant = adjustHeight
+                    descriptionTextView?.superview?.layoutIfNeeded()
+                }
+                UIView.animate(withDuration: Const.animationDuration) {
                     descriptionMoreView?.alpha = 0
                 }
             }).disposed(by: disposeBag)
@@ -246,7 +286,9 @@ extension SearchResultDetailViewController: StoryboardView {
             }).disposed(by: disposeBag)
         
         infoDeveloperWebButton.rx.throttleTap()
+            .debug("tt1")
             .withLatestFrom(reactor.state.compactMap({ URL(string: $0.sellerUrl) }))
+            .debug("tt2")
             .bind(onNext: { $0.openURL() })
             .disposed(by: disposeBag)
         
@@ -254,10 +296,9 @@ extension SearchResultDetailViewController: StoryboardView {
             privacyDescriptionEvent.asObservable(),
             infoPrivacyPolicyButton.rx.throttleTap().asObservable()
         )
-            .map({ "개인정보 방침 웹 url" })
-            .bind(onNext: { url in
-                print("개인정보 방침 웹 버튼 이벤트..")
-            }).disposed(by: disposeBag)
+            .compactMap({ URL(string: "https://m.kakaobank.com/PrivacyPolicy;ctg=privacyManagementPolicy") })
+            .bind(onNext: { $0.openURL() })
+            .disposed(by: disposeBag)
         
         infoIssueReportButton.rx.throttleTap()
             .bind(onNext: { _ in
@@ -265,7 +306,6 @@ extension SearchResultDetailViewController: StoryboardView {
             }).disposed(by: disposeBag)
         
         infoSupportedDownButton.rx.tap
-            .take(1)
             .withLatestFrom(reactor.state.map({ $0.supportedDeviceTypes}))
             .bind(onNext: { [weak self] devices in
                 self?.animateShowInfoSubView(button: self?.infoSupportedDownButton, completion: { [weak self] in
@@ -276,7 +316,6 @@ extension SearchResultDetailViewController: StoryboardView {
             }).disposed(by: disposeBag)
         
         infoLanguageDownButton.rx.tap
-            .take(1)
             .bind(onNext: { [weak self] _ in
                 self?.infoLanguageSubView.isHidden = false
                 self?.animateShowInfoSubView(button: self?.infoLanguageDownButton, completion: { [weak self] in
@@ -285,7 +324,6 @@ extension SearchResultDetailViewController: StoryboardView {
             }).disposed(by: disposeBag)
         
         infoContentRatingDownButton.rx.tap
-            .take(1)
             .bind(onNext: { [weak self] _ in
                 self?.infoContentRatingSubView.isHidden = false
                 self?.animateShowInfoSubView(button: self?.infoContentRatingDownButton, completion: { [weak self] in
@@ -307,13 +345,16 @@ extension SearchResultDetailViewController: StoryboardView {
             .do(onNext: { [weak self] artistName in
                 self?.configureActiveLabel(artistName)
             })
-        .bind(
-            to: mainArtistNameLabel.rx.text,
-            summaryArtistNameLabel.rx.text,
-            descriptionArtistNameLabel.rx.text,
-            infoArtistNameLabel.rx.text
-        )
-        .disposed(by: disposeBag)
+            .bind(to: mainArtistNameLabel.rx.text,
+                  summaryArtistNameLabel.rx.text,
+                  descriptionArtistNameLabel.rx.text,
+                  infoArtistNameLabel.rx.text)
+            .disposed(by: disposeBag)
+                
+        reactor.state.map({ $0.artistName })
+            .map({ "© \($0)" })
+            .bind(to: infoCopyrightLabel.rx.text)
+            .disposed(by: disposeBag)
         
         reactor.state.map({ $0.ratingDouble })
             .map({ "\($0)" })
@@ -476,11 +517,58 @@ extension SearchResultDetailViewController {
     }
     
     private func animateShowInfoSubView(button: UIButton?, completion: @escaping () -> Void) {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: Const.animationDuration) {
             button?.alpha = 0
             button?.layoutIfNeeded()
             completion()
         }
+    }
+    
+    private func findOffsetY(
+        _ target: UIView?,
+        scrollTag: ScrollTag,
+        rootScrollView: UIScrollView?
+    ) -> CGFloat {
+        guard let rootScrollView = rootScrollView else { return .zero }
+        
+        let defaultBottomY: CGFloat = rootScrollView.contentSize.height
+        - rootScrollView.bounds.size.height
+        + rootScrollView.contentInset.bottom
+        + rootScrollView.safeAreaInsets.bottom
+        
+        let targetTag: Int = scrollTag.rawValue
+        
+        var minY: CGFloat = 0.0
+        var maxY: CGFloat = 0.0
+        var superView: UIView? = target?.superview
+        
+        func sum(to minY: inout CGFloat, to maxY: inout CGFloat, target: CGRect) {
+            minY += target.minY
+            maxY += target.maxY
+        }
+        
+        while true {
+            if let target = target, target.tag == targetTag {
+                sum(to: &minY, to: &maxY, target: target.frame)
+                break
+                
+            } else if let superView = superView, superView.tag == targetTag {
+                sum(to: &minY, to: &maxY, target: superView.frame)
+                break
+                
+            } else if superView === rootScrollView {
+                break
+            }
+            
+            sum(to: &minY, to: &maxY, target: superView?.frame ?? .zero)
+            superView = superView?.superview
+        }
+        
+        if maxY > defaultBottomY {
+            return defaultBottomY
+        }
+        
+        return minY
     }
 }
 

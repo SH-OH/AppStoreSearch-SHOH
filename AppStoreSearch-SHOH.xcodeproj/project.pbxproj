@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09000E332728143900868992 /* SPMSHOHProxy in Frameworks */ = {isa = PBXBuildFile; productRef = 09000E322728143900868992 /* SPMSHOHProxy */; };
 		092FAE522725696C007E0727 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE512725696C007E0727 /* Date+Extensions.swift */; };
 		092FAE542725AD32007E0727 /* SupportDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE532725AD32007E0727 /* SupportDevice.swift */; };
 		092FAE562725AD63007E0727 /* DeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092FAE552725AD63007E0727 /* DeviceType.swift */; };
@@ -31,7 +32,6 @@
 		09B560A727215AE100D45733 /* AppStoreSearch_SHOHTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560A627215AE100D45733 /* AppStoreSearch_SHOHTests.swift */; };
 		09B560B127215AE100D45733 /* AppStoreSearch_SHOHUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560B027215AE100D45733 /* AppStoreSearch_SHOHUITests.swift */; };
 		09B560B327215AE100D45733 /* AppStoreSearch_SHOHUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560B227215AE100D45733 /* AppStoreSearch_SHOHUITestsLaunchTests.swift */; };
-		09B560C127215B4D00D45733 /* SPMSHOHProxy in Frameworks */ = {isa = PBXBuildFile; productRef = 09B560C027215B4D00D45733 /* SPMSHOHProxy */; };
 		09B560CC2721630F00D45733 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560CB2721630F00D45733 /* AppCoordinator.swift */; };
 		09B560D327216C4C00D45733 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560D227216C4700D45733 /* NetworkProvider.swift */; };
 		09B560D527216C5400D45733 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B560D427216C5300D45733 /* ImageLoader.swift */; };
@@ -183,7 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09B560C127215B4D00D45733 /* SPMSHOHProxy in Frameworks */,
+				09000E332728143900868992 /* SPMSHOHProxy in Frameworks */,
 				C99DDFBEFBF8BE27EB21E07C /* Pods_AppStoreSearch_SHOH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,7 +607,7 @@
 			);
 			name = "AppStoreSearch-SHOH";
 			packageProductDependencies = (
-				09B560C027215B4D00D45733 /* SPMSHOHProxy */,
+				09000E322728143900868992 /* SPMSHOHProxy */,
 			);
 			productName = "AppStoreSearch-SHOH";
 			productReference = 09B5608C27215ADF00D45733 /* AppStoreSearch-SHOH.app */;
@@ -686,7 +686,7 @@
 			);
 			mainGroup = 09B5608327215ADF00D45733;
 			packageReferences = (
-				09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */,
+				09000E312728143900868992 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */,
 			);
 			productRefGroup = 09B5608D27215ADF00D45733 /* Products */;
 			projectDirPath = "";
@@ -1272,7 +1272,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */ = {
+		09000E312728143900868992 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SH-OH/SPMSHOHProxy.git";
 			requirement = {
@@ -1283,9 +1283,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		09B560C027215B4D00D45733 /* SPMSHOHProxy */ = {
+		09000E322728143900868992 /* SPMSHOHProxy */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 09B560BF27215B4D00D45733 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */;
+			package = 09000E312728143900868992 /* XCRemoteSwiftPackageReference "SPMSHOHProxy" */;
 			productName = SPMSHOHProxy;
 		};
 /* End XCSwiftPackageProductDependency section */

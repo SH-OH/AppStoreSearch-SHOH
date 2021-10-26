@@ -30,6 +30,7 @@ final class SearchViewController: UIViewController, StoryboardLoadable {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.placeholder = Const.placeholder
         searchController.searchBar.setValue(Const.cancelTitleKeyValue.value, forKey: Const.cancelTitleKeyValue.key)
+        searchController.searchBar.autocorrectionType = .no
         return searchController
     }()
     
