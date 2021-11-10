@@ -10,9 +10,14 @@ import UIKit.UINavigationController
 import SPMSHOHProxy
 
 final class SearchCoordinator: CoordinatorType {
+    
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     private unowned var navigationController: UINavigationController
     
-    private let useCase: SearchUseCase
+    private let useCase: SearchUseCaseType
     private var children: [SearchChildProtocol]
     private var currentChild: SearchChildProtocol?
     
@@ -25,7 +30,7 @@ final class SearchCoordinator: CoordinatorType {
     
     init(
         _ navigationController: UINavigationController,
-        useCase: SearchUseCase
+        useCase: SearchUseCaseType
     ) {
         self.navigationController = navigationController
         self.useCase = useCase

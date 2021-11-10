@@ -13,6 +13,11 @@ import SPMSHOHProxy
 typealias SearchResultSnapshotType = NSDiffableDataSourceSnapshot<Section, Section.Item>
 
 final class SearchResultViewReactor: Reactor, Coordinatable {
+    
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     struct Dependency: DependencyType {
         let searchKeyword: String
     }
@@ -51,11 +56,11 @@ final class SearchResultViewReactor: Reactor, Coordinatable {
     
     var initialState: State
     let coordinator: CoordinatorType?
-    private let useCase: SearchUseCase
+    private let useCase: SearchUseCaseType
     
     init(
         with dependency: DependencyType,
-        useCase: SearchUseCase,
+        useCase: SearchUseCaseType,
         coordinator: CoordinatorType
     ) {
         let dependency = dependency.cast(Dependency.self)
@@ -195,7 +200,8 @@ extension SearchResultViewReactor {
 
 extension SearchResultViewReactor {
     private func fetchSearchList(query: String) -> Observable<[SearchModel.Result]> {
-        return self.useCase.fetchSearchList(query: query)
+        return self.useCase
+            .fetchSearchList(query: query, limit: 200, country: .KR)
             .take(until: self.action.filter(Action.isUpdateSearchKeyword))
             .catch({ error -> Observable<[SearchModel.Result]> in
                 print("Failed fetchSearchList : \(error)")

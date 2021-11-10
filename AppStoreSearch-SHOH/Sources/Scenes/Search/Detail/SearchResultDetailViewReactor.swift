@@ -12,8 +12,13 @@ import DeviceKit
 import ReactorKit
 
 final class SearchResultDetailViewReactor: Reactor, Coordinatable {
+    
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     struct Dependency: DependencyType {
-        let useCase: SearchUseCase
+        let useCase: SearchUseCaseType
         let coordinator: CoordinatorType
         let item: SearchModel.Result
     }
@@ -56,7 +61,7 @@ final class SearchResultDetailViewReactor: Reactor, Coordinatable {
     }
     
     let initialState: State
-    private let useCase: SearchUseCase
+    private let useCase: SearchUseCaseType
     let coordinator: CoordinatorType?
     
     init(with dependency: DependencyType) {

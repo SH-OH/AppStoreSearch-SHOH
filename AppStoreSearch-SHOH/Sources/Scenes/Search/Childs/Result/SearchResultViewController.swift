@@ -14,6 +14,10 @@ import RxRelay
 
 final class SearchResultViewController: UIViewController, StoryboardLoadable, SearchChildProtocol {
     
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     private enum Const {
         static let cellHeight: CGFloat = 270
     }

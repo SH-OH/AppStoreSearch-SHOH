@@ -9,6 +9,11 @@ import ReactorKit
 import SPMSHOHProxy
 
 final class SearchRecentViewReactor: Reactor, Coordinatable {
+    
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     struct Dependency: DependencyType {
         let recentList: [String]
     }
@@ -27,11 +32,11 @@ final class SearchRecentViewReactor: Reactor, Coordinatable {
     
     let initialState: State
     let coordinator: CoordinatorType?
-    private let useCase: SearchUseCase
+    private let useCase: SearchUseCaseType
     
     init(
         with dependency: DependencyType,
-        useCase: SearchUseCase,
+        useCase: SearchUseCaseType,
         coordinator: CoordinatorType
     ) {
         let dependency = dependency.cast(Dependency.self)

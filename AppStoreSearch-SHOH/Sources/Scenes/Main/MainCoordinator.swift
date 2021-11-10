@@ -10,6 +10,11 @@ import UIKit.UINavigationController
 import SPMSHOHProxy
 
 final class MainCoordinator: CoordinatorType {
+    
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     private unowned var navigationController: UINavigationController
     
     init(_ navigationController: UINavigationController) {

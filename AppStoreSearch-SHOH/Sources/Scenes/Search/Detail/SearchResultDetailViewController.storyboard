@@ -1110,13 +1110,13 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 개인 정보 보호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9l-mO-hdf">
-                                                        <rect key="frame" x="15.000000000000007" y="11.000000000000002" width="121.66666666666669" height="21.666666666666671"/>
+                                                        <rect key="frame" x="15.000000000000007" y="10.999999999999998" width="121.66666666666669" height="23.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHY-uE-t2r">
-                                                        <rect key="frame" x="298.33333333333331" y="9.3333333333334849" width="100.66666666666669" height="25"/>
+                                                        <rect key="frame" x="298.33333333333331" y="10.333333333333485" width="100.66666666666669" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="mt3-Vw-Xei"/>
                                                         </constraints>
@@ -1126,13 +1126,13 @@
                                                         </buttonConfiguration>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발자가 아래 설명된 데이터 처리 방식이 앱의 개인정보 처리방침에 포함되어 있을 수 있다고 표시했습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-mC-NTa" customClass="ActiveLabel" customModule="ActiveLabel">
-                                                        <rect key="frame" x="15" y="47.666666666666742" width="384" height="34"/>
+                                                        <rect key="frame" x="15" y="49.333333333333485" width="384" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIM-aq-uhG">
-                                                        <rect key="frame" x="15" y="91.666666666666742" width="384" height="193"/>
+                                                        <rect key="frame" x="15" y="93.333333333333499" width="384" height="191.33333333333337"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jxs-9i-EHi">
                                                                 <rect key="frame" x="177" y="18.666666666666661" width="30" height="28.333333333333339"/>
@@ -1143,19 +1143,19 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자에게 연결된 데이터" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pac-FL-RbD">
-                                                                <rect key="frame" x="112.00000000000001" y="55" width="160.33333333333337" height="21"/>
+                                                                <rect key="frame" x="112.00000000000001" y="55.000000000000007" width="160.33333333333337" height="19.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음 데이터가 수집되어 신원에 연결될 수 있습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owB-Eg-gDE">
-                                                                <rect key="frame" x="15" y="86" width="354" height="17"/>
+                                                                <rect key="frame" x="15" y="84.333333333333258" width="354" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bbv-fq-WwW">
-                                                                <rect key="frame" x="15.000000000000002" y="120" width="23.666666666666671" height="16"/>
+                                                                <rect key="frame" x="15.000000000000002" y="118.33333333333326" width="23.666666666666671" height="16"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="wub-VJ-xKl"/>
@@ -1163,13 +1163,13 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="재무 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QR7-So-nAU">
-                                                                <rect key="frame" x="48.666666666666657" y="120.99999999999999" width="45" height="14.333333333333329"/>
+                                                                <rect key="frame" x="48.666666666666657" y="119.33333333333326" width="45" height="14.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uI9-d8-dra">
-                                                                <rect key="frame" x="207" y="118.99999999999999" width="20" height="18.333333333333343"/>
+                                                                <rect key="frame" x="207" y="117.33333333333326" width="20" height="18.333333333333329"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="cqg-a0-UUq"/>
@@ -1177,13 +1177,13 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmG-e7-dS2">
-                                                                <rect key="frame" x="237" y="120.99999999999999" width="21" height="14.333333333333329"/>
+                                                                <rect key="frame" x="237" y="119.33333333333326" width="21" height="14.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wue-An-N1u">
-                                                                <rect key="frame" x="17" y="154" width="19.666666666666671" height="18.666666666666671"/>
+                                                                <rect key="frame" x="17" y="152.33333333333326" width="19.666666666666671" height="18.666666666666671"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="GCY-ut-elh"/>
@@ -1191,13 +1191,13 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연락처 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abx-f2-dxL">
-                                                                <rect key="frame" x="48.666666666666657" y="156" width="55.333333333333343" height="14.333333333333343"/>
+                                                                <rect key="frame" x="48.666666666666657" y="154.33333333333326" width="55.333333333333343" height="14.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.text.rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G4S-jf-K9q">
-                                                                <rect key="frame" x="205.33333333333334" y="154.66666666666666" width="23.666666666666657" height="17"/>
+                                                                <rect key="frame" x="205.33333333333334" y="152.99999999999991" width="23.666666666666657" height="17"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="KnL-NL-uGE"/>
@@ -1205,7 +1205,7 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="식별자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfC-mD-paD">
-                                                                <rect key="frame" x="237" y="156" width="31.333333333333314" height="14.333333333333343"/>
+                                                                <rect key="frame" x="237" y="154.33333333333326" width="31.333333333333314" height="14.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>

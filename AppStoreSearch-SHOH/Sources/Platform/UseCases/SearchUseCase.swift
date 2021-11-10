@@ -8,7 +8,15 @@
 import Foundation
 import RxSwift
 
-struct SearchUseCase {
+protocol SearchUseCaseType {
+    func fetchSearchList(
+        query: String,
+        limit: Int,
+        country: SearchService.CountryType
+    ) -> Observable<[SearchModel.Result]>
+}
+
+struct SearchUseCase: SearchUseCaseType {
     private let provider: NetworkProvider<SearchService>
     
     init(_ provider: NetworkProvider<SearchService> = .init()) {

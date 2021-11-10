@@ -15,6 +15,10 @@ import SnapKit
 
 final class SearchResultDetailViewController: UIViewController, StoryboardLoadable {
     
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     private enum ScrollTag: Int {
         case main = 100
         case summary
@@ -152,20 +156,20 @@ final class SearchResultDetailViewController: UIViewController, StoryboardLoadab
     }
     
     private func configureActiveLabel(_ artistName: String) {
-        let text = artistName + " " + Const.privacyText
-        let fontSize = privacyDescriptionActiveLabal.font.pointSize
-        let font = UIFont.boldSystemFont(ofSize: fontSize)
-        let range = (text as NSString).range(of: artistName)
-        let attributedString = NSMutableAttributedString(string: text)
-        attributedString.addAttribute(.font, value: font, range: range)
-        privacyDescriptionActiveLabal.attributedText = attributedString
-        
-        let customType = ActiveType.custom(pattern: "\\s\(Const.privacyUrlText)\\b")
+        let customType = ActiveType.custom(pattern: Const.privacyUrlText)
         privacyDescriptionActiveLabal.enabledTypes = [customType]
         privacyDescriptionActiveLabal.customColor[customType] = .link
         privacyDescriptionActiveLabal.handleCustomTap(for: customType) { [weak privacyDescriptionEvent] _ in
             privacyDescriptionEvent?.accept(())
         }
+        
+        let text = artistName + " " + Const.privacyText
+        let fontSize = privacyDescriptionActiveLabal.font.pointSize + 1
+        let font = UIFont.boldSystemFont(ofSize: fontSize)
+        let range = (text as NSString).range(of: artistName)
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.font, value: font, range: range)
+        privacyDescriptionActiveLabal.attributedText = attributedString
     }
 }
 

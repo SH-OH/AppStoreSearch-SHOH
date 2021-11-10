@@ -19,6 +19,10 @@ protocol SearchControlDelegate: AnyObject {
 
 final class SearchViewController: UIViewController, StoryboardLoadable {
     
+    deinit {
+        print("deinit", String(describing: self))
+    }
+    
     private enum Const {
         static let placeholder: String = "게임, 앱, 스토리 등"
         static let cancelTitleKeyValue: (key: String, value: String) = ("cancelButtonText", "취소")
